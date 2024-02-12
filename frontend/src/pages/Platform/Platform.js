@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Platform.module.scss";
 import { Icon } from "@iconify/react";
 import { MdiInstagram } from "../../assets/icons/icons";
 
-const Platform = () => {
+const Platform = ({ selections, setSelections, currentPage }) => {
   const [selectedPlatform, setSelectedPlatform] = useState(null);
   const platforms = [
     {
@@ -44,6 +44,13 @@ const Platform = () => {
         colorClass: "linkedinColor",
     }
   ];
+
+  useEffect(() => {
+    // Update the selections array whenever the selectedOption changes
+    const updatedSelections = [...selections];
+    updatedSelections[currentPage] = selectedPlatform;
+    setSelections(updatedSelections);
+  }, [selectedPlatform, selections, setSelectedPlatform]);
 
   const handleClick = (platform) => {
     setSelectedPlatform(platform.id);
