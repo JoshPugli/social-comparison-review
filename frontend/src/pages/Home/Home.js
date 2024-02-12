@@ -16,10 +16,16 @@ const Home = () => {
   const componentProps = {
     Platform: { selections, setSelections, currentPage },
     Usage: {
-      /* Props for Usage */
+      selections,
+      setSelections,
+      currentPage,
+      app: selections[0],
     },
     Issue: {
-      /* Props for Issue */
+      selections,
+      setSelections,
+      currentPage,
+      app: selections[0],
     },
     Distortions: {
       /* Props for Distortions */

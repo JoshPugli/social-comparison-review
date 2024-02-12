@@ -1,12 +1,41 @@
 import React, { useState, useRef } from "react";
-import "./Usage.module.scss";
+import styles from "./Usage.module.scss";
+import { platforms, usageOptions } from "../../assets/variables";
 
-const Platform = () => {
+const Usage = ({ selections, setSelections, currentPage, app }) => {
+  const [selectedUsage, setSelectedUsage] = useState(selections[currentPage]);
+  let color = platforms.find((platform) => platform.name === app).colorClass;
+
+  const handleSelection = (option) => {
+    setSelectedUsage(option); // Update local state
+    const updatedSelections = [...selections]; // Copy existing selections
+    updatedSelections[currentPage] = option; // Update the current page's selection
+    setSelections(updatedSelections); // Update the global selections state
+  };
+
   return (
-    <div style={{ fontSize: "30px", marginTop: "30vh" }}>
-      How do you primarily use this platform, choose from below...{" "}
+    <div className={styles.container}>
+      <h1>
+        How do you primarily use <span className={styles[color]}>{app}</span>?{" "}
+      </h1>
+      Temporary ugly list of options for example. Need to figure out what to do
+      for this.
+      <ul className={styles.optionsList}>
+        {usageOptions.map((option, index) => (
+          <li
+            key={index}
+            className={
+              styles.optionItem +
+              (selectedUsage === option ? ` ${styles.selected}` : "")
+            }
+            onClick={() => handleSelection(option)}
+          >
+            {option}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default Platform;
+export default Usage;

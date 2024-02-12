@@ -1,0 +1,66 @@
+.container {
+  display: flex; // Make the container a flex container
+  flex-direction: column; // Stack the children vertically
+  align-items: center; // Center the children horizontally
+  margin-top: 20px; // Add some space at the top
+}
+
+.container h1 {
+  font-size: 40px;
+  opacity: 0.8;
+  color: black;
+}
+
+.thoughtInput {
+  width: 100%; // Take up the full container width
+  padding: 10px; // Add some padding inside the text box
+  margin-top: 20px; // Space between the title and the text area
+  border: 1px solid #ccc; // A light border
+  border-radius: 4px; // Rounded corners
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); // Inner shadow for depth
+  resize: vertical; // Allow vertical resizing only
+}
+
+.facebookColor {
+  color: #4267b2; // Facebook's color
+}
+
+.twitterColor {
+  color: #1da1f2; // Twitter's color
+}
+
+.redditColor {
+  color: #ff5700; // Reddit's color
+}
+
+.snapchatColor {
+  color: #fffc00; // Snapchat's color
+}
+
+.tiktokColor {
+  color: #000000; // TikTok's color
+}
+
+.linkedinColor {
+  color: #0077b5; // LinkedIn's color
+}
+
+.instagramColor {
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Hide the text color to show the gradient */
+}
+
+.subheader {
+  margin-top: -15px;
+  font-size: 25px;
+  color: rgb(69, 69, 69);
+}

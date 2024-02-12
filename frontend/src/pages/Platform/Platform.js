@@ -2,54 +2,24 @@ import React, { useState, useEffect } from "react";
 import styles from "./Platform.module.scss";
 import { Icon } from "@iconify/react";
 import { MdiInstagram } from "../../assets/icons/icons";
+import { platforms } from "../../assets/variables";
 
 const Platform = ({ selections, setSelections, currentPage }) => {
-  const [selectedPlatform, setSelectedPlatform] = useState(null);
-  const platforms = [
-    {
-      id: 1,
-      name: "Facebook",
-      icon: <Icon icon="ic:baseline-facebook" />,
-      colorClass: "facebookColor",
-    },
-    {
-      id: 2,
-      name: "Twitter",
-      icon: <Icon icon="mdi:twitter" />,
-      colorClass: "twitterColor",
-    },
-    {
-      id: 3,
-      name: "Instagram",
-      icon: <Icon icon="mdi:instagram" />,
-      alternativeIcon: <MdiInstagram />,
-      colorClass: "instagramColor",
-    },
-    {
-      id: 4,
-      name: "Reddit",
-      icon: <Icon icon="ic:baseline-reddit" />,
-      colorClass: "redditColor",
-    },
-    {
-      id: 5,
-      name: "TikTok",
-      icon: <Icon icon="ic:baseline-tiktok" />,
-      colorClass: "tiktokColor",
-    },
-    {
-        id: 6,
-        name: "LinkedIn",
-        icon: <Icon icon="mdi:linkedin" />,
-        colorClass: "linkedinColor",
-    }
-  ];
+  let prev_selection = platforms.find(
+    (platform) => platform.name === selections[currentPage]
+  );
+  const [selectedPlatform, setSelectedPlatform] = useState(prev_selection ? prev_selection.id : null);
 
   useEffect(() => {
     // Update the selections array whenever the selectedOption changes
-    const updatedSelections = [...selections];
-    updatedSelections[currentPage] = selectedPlatform;
-    setSelections(updatedSelections);
+    const platform = platforms.find(
+      (platform) => platform.id === selectedPlatform
+    );
+    if (platform) {
+      const updatedSelections = [...selections];
+      updatedSelections[currentPage] = platform.name; // Assign the platform's name to the current page in selections
+      setSelections(updatedSelections);
+    }
   }, [selectedPlatform, selections, setSelectedPlatform]);
 
   const handleClick = (platform) => {
@@ -110,7 +80,7 @@ const Platform = ({ selections, setSelections, currentPage }) => {
                     transition: "opacity 0.3s ease-out",
                   }}
                 >
-                  {platform.name} 
+                  {platform.name}
                 </span>
                 <span
                   className={`${styles.platformText} ${styles.instagramGradientText}`}
@@ -119,7 +89,7 @@ const Platform = ({ selections, setSelections, currentPage }) => {
                     transition: "opacity 0.3s ease-out",
                   }}
                 >
-                  {platform.name} 
+                  {platform.name}
                 </span>
               </div>
             ) : (
