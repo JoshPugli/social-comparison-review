@@ -15,7 +15,7 @@ const Platform = () => {
   ];
 
   const handleClick = (platform) => {
-    setSelectedPlatform(platform.id); // Update the selected platform based on its id
+    setSelectedPlatform(platform.id); 
   };
 
   return (
@@ -28,11 +28,34 @@ const Platform = () => {
           <div
             key={platform.id}
             onClick={() => handleClick(platform)}
-            className={`${styles.platform} ${selectedPlatform === platform.id ? styles.selected : ""} ${selectedPlatform === platform.id ? styles[platform.colorClass] : ""}`}
+            className={`${styles.platform} ${
+              selectedPlatform === platform.id ? styles.selected : ""
+            } ${selectedPlatform === platform.id ? styles[platform.colorClass] : ""}`}
           >
-            {/* Check if platform is Instagram and it's selected to change the icon */}
-            {selectedPlatform === platform.id && platform.id === 3 ? (
-              <span className={styles.icon} style={{color: "rgb(69, 69, 69)"}}>{platform.alternativeIcon}</span>
+            {/* Render both icons for Instagram but control visibility */}
+            {platform.id === 3 ? (
+              <>
+                <span
+                  className={styles.icon}
+                  style={{
+                    opacity: selectedPlatform === platform.id ? 0 : 1,
+                    transition: "opacity 0.3s ease-out",
+                  }}
+                >
+                  {platform.icon}
+                </span>
+                <span
+                  className={styles.icon}
+                  style={{
+                    position: "absolute",
+                    marginBottom: "55px",
+                    opacity: selectedPlatform === platform.id ? 1 : 0,
+                    transition: "opacity 0.3s ease-out",
+                  }}
+                >
+                  {platform.alternativeIcon}
+                </span>
+              </>
             ) : (
               <span className={styles.icon}>{platform.icon}</span>
             )}
@@ -45,3 +68,4 @@ const Platform = () => {
 };
 
 export default Platform;
+

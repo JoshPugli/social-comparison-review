@@ -57,16 +57,17 @@
 }
 
 .instagramColor {
-  background: linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  -webkit-background-clip: text;
-  color: transparent;
+//   background: linear-gradient(
+//     45deg,
+//     #f09433 0%,
+//     #e6683c 25%,
+//     #dc2743 50%,
+//     #cc2366 75%,
+//     #bc1888 100%
+//   );
+//   -webkit-background-clip: text;
+//   color: transparent;
+    color: #bc2a8d; // Instagram's color
 }
 
 .redditColor {
@@ -80,3 +81,7 @@
 .tiktokColor {
   color: #000000; // TikTok's color
 }
+
+.icon, .platformText {
+    transition: opacity 0.3s ease; // Adjust time as needed
+  }
