@@ -8,6 +8,7 @@ const Footer = ({ onBack, onForward, canContinue, canGoBack }) => {
       <button
         className={`${styles.button} ${styles.backButton}`}
         onClick={onBack}
+        disabled={!canGoBack}
       >
         <span className={`${styles.icon} ${styles.backIcon}`}>
           <Icon icon="ph:arrow-left-bold" />
@@ -20,10 +21,7 @@ const Footer = ({ onBack, onForward, canContinue, canGoBack }) => {
         disabled={!canContinue}
       >
         Continue
-        <span
-          className={`${styles.icon} ${styles.forwardIcon}`}
-          disabled={!canGoBack}
-        >
+        <span className={`${styles.icon} ${styles.forwardIcon}`}>
           <Icon icon="ph:arrow-right-bold" />
         </span>
       </button>

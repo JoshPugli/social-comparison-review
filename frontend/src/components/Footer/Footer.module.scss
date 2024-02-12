@@ -25,6 +25,13 @@
   &:hover {
     background-color: darken(#4892fb, 10%);
   }
+
+  &:disabled {
+    background-color: #cccccc; // Light gray, adjust as needed
+    color: #666666; // Darker gray to indicate the button is disabled
+    cursor: not-allowed; // Shows a 'not allowed' cursor on hover
+    opacity: 0.7; // Optionally reduce opacity to make it look inactive
+  }
 }
 
 .backButton {
@@ -39,6 +46,12 @@
 
   &:hover {
     color: rgb(29, 29, 29);
+  }
+
+  &:disabled {
+    color: #666666; // Darker gray to indicate the button is disabled
+    cursor: not-allowed; // Shows a 'not allowed' cursor on hover
+    opacity: 0.7; // Optionally reduce opacity to make it look inactive
   }
 }
 
