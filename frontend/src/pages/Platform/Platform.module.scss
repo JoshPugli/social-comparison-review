@@ -57,17 +57,17 @@
 }
 
 .instagramColor {
-//   background: linear-gradient(
-//     45deg,
-//     #f09433 0%,
-//     #e6683c 25%,
-//     #dc2743 50%,
-//     #cc2366 75%,
-//     #bc1888 100%
-//   );
-//   -webkit-background-clip: text;
-//   color: transparent;
-    color: #bc2a8d; // Instagram's color
+  //   background: linear-gradient(
+  //     45deg,
+  //     #f09433 0%,
+  //     #e6683c 25%,
+  //     #dc2743 50%,
+  //     #cc2366 75%,
+  //     #bc1888 100%
+  //   );
+  //   -webkit-background-clip: text;
+  //   color: transparent;
+  color: #bc2a8d; // Instagram's color
 }
 
 .redditColor {
@@ -82,6 +82,31 @@
   color: #000000; // TikTok's color
 }
 
-.icon, .platformText {
-    transition: opacity 0.3s ease; // Adjust time as needed
-  }
+.icon,
+.platformText {
+  transition: opacity 0.3s ease; // Adjust time as needed
+}
+
+.platformTextWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.instagramGradientText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+  -webkit-background-clip: text;
+  color: transparent; /* Hide the text color to show the gradient */
+  background-clip: text;
+  opacity: 0; /* Start invisible and transition to visible */
+  transition: opacity 0.3s ease-out;
+}
