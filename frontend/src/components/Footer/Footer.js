@@ -1,14 +1,18 @@
-import React from 'react';
-import styles from './Footer.module.scss'; 
-import { EpBack } from '../../assets/icons/icons'; 
-import { Icon } from '@iconify/react';
+import React from "react";
+import styles from "./Footer.module.scss";
+import { Icon } from "@iconify/react";
 
 const Footer = ({ onBack, onForward }) => {
-    
   return (
     <div className={styles.footer}>
-      <button className={styles.backButton} onClick={onBack}><Icon icon="ph:arrow-left-bold" /> Back</button>
-      <button className={styles.forwardButton} onClick={onForward}>Forward <Icon icon="ph:arrow-right-bold" /></button>
+      <button className={`${styles.button} ${styles.backButton}`} onClick={onBack}>
+        <span className={`${styles.icon} ${styles.backIcon}`}><Icon icon="ph:arrow-left-bold" /></span>
+        Back
+      </button>
+      <button className={`${styles.button} ${styles.forwardButton}`} onClick={onForward}>
+        Continue
+        <span className={`${styles.icon} ${styles.forwardIcon}`}><Icon icon="ph:arrow-right-bold" /></span>
+      </button>
     </div>
   );
 };

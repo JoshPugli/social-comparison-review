@@ -4,10 +4,19 @@ import UofT from "../../assets/images/uoft_large.png";
 
 const HeaderBar = ({ progress, sections }) => {
   const sectionsRefs = useRef(sections.map(() => React.createRef()));
-  const progressBarContainerRef = useRef();
   const logoRef = useRef();
   const [progressBarX, setProgressBarX] = useState(0);
 
+  useEffect(() => {
+    const calculateProgressBarPosition = () => {
+      const elts = document.getElementsByClassName(styles.section);
+      const rects = Array.from(elts).map((elt) => elt.getBoundingClientRect());
+      setProgressBarX(rects[progress].x + rects[progress].width);
+    };
+    window.addEventListener('load', calculateProgressBarPosition);
+    return () => window.removeEventListener('load', calculateProgressBarPosition);
+  }, []); 
+  
   useEffect(() => {
     const elts = document.getElementsByClassName(styles.section);
     const rects = Array.from(elts).map((elt) => elt.getBoundingClientRect());

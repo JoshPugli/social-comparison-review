@@ -6,8 +6,9 @@ $bottom_padding: 150px; // Adjust this value to the height of your Footer
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding-top: $top_padding;
-    padding-bottom: $bottom_padding;
+  padding-bottom: $bottom_padding;
   height: calc(
     100vh - $top_padding - $bottom_padding
   ); // Adjust this value to the height of your HeaderBar

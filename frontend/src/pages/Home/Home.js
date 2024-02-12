@@ -1,49 +1,36 @@
-import React, { useState, useRef } from "react";
-import "./Home.scss"; // Assuming you have your SCSS file
+import React, { useState, useRef, useEffect } from "react";
+import "./Home.scss";
 import HeaderBar from "../../components/HeaderBar/HeaderBar";
 import Footer from "../../components/Footer/Footer";
+import Platform from "../Platform/Platform";
+import Usage from "../Usage/Usage";
+import Issue from "../Issue/Issue";
+import Distortions from "../Distortions/Distortions";
+import Reframe from "../Reframe/Reframe";
 
 const Home = () => {
-  const [problem, setProblem] = useState("");
-  const [showDistortions, setShowDistortions] = useState(false);
-  const distortionsRef = useRef(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const stages = ["Platform", "Usage", "Issue", "Distortions", "Reframe"];
+  const components = [Platform, Usage, Issue, Distortions, Reframe];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowDistortions(true);
-    scrollToDistortions();
-  };
+  const handleBack = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 0));
+  }
 
-  const scrollToDistortions = () => {
-    distortionsRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const handleForward = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, stages.length - 1));
+  }
 
   return (
     <div>
       <HeaderBar
-        progress={0}
-        sections={["Platform", "Usage", "Issue", "Distortions", "Reframe"]}
+        progress={currentPage}
+        sections={stages}
       />
       <div className="home-container">
-        <h2>What's on your mind?</h2>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            value={problem}
-            onChange={(e) => setProblem(e.target.value)}
-            placeholder="Describe your problem"
-          ></textarea>
-          <button type="submit">Submit</button>
-        </form>
-        {showDistortions && (
-          <div ref={distortionsRef} className="distortions-section">
-            {/* Distortions content goes here */}
-            <h3>Select the distortion that fits your situation:</h3>
-            {/* Example distortion */}
-            <div className="distortion">All-or-Nothing Thinking</div>
-          </div>
-        )}
+        {React.createElement(components[currentPage])}
       </div>
-        <Footer />
+      <Footer onBack={handleBack} onForward={handleForward}/>
     </div>
   );
 };

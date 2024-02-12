@@ -76,9 +76,11 @@
 
   .active {
     color: rgb(69, 69, 69);
+    transition: color 0.3s; // Optional: transition for the color change
   }
 
   .inactive {
     color: rgb(149, 149, 149); // Light grey for inactive section text
+    transition: color 0.3s; // Optional: transition for the color change
   }
 }
