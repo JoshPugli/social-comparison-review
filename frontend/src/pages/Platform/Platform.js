@@ -33,16 +33,16 @@ const Platform = () => {
     },
     {
       id: 5,
-      name: "Snapchat",
-      icon: <Icon icon="mingcute:snapchat-fill" />,
-      colorClass: "snapchatColor",
-    },
-    {
-      id: 6,
       name: "TikTok",
       icon: <Icon icon="ic:baseline-tiktok" />,
       colorClass: "tiktokColor",
     },
+    {
+        id: 6,
+        name: "LinkedIn",
+        icon: <Icon icon="mdi:linkedin" />,
+        colorClass: "linkedinColor",
+    }
   ];
 
   const handleClick = (platform) => {
@@ -52,7 +52,7 @@ const Platform = () => {
   return (
     <div>
       <div className={styles.platformContainer}>
-        What is your Social Media Platform, choose from below...
+        <h1>Which app below often leaves you feeling negative? </h1>
       </div>
       <div className={styles.platformContainer}>
         {platforms.map((platform) => (
