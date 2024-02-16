@@ -2,13 +2,20 @@
   display: flex; // Make the container a flex container
   flex-direction: column; // Stack the children vertically
   align-items: center; // Center the children horizontally
-  margin-top: 20px; // Add some space at the top
+  align-items: flex-start; // Align items to the start (left)
+  width: 50vw;
 }
 
 .container h1 {
   font-size: 40px;
   opacity: 0.8;
   color: black;
+}
+
+.subheader {
+  margin-top: -15px;
+  font-size: 20px;
+  color: rgb(69, 69, 69);
 }
 
 .thoughtInput {
@@ -59,8 +66,34 @@
   color: transparent; /* Hide the text color to show the gradient */
 }
 
-.subheader {
-  margin-top: -15px;
-  font-size: 25px;
-  color: rgb(69, 69, 69);
+.columns {
+  display: flex;
+  flex-direction: column; // Ensure columns are side-by-side
+  justify-content: flex-start; // Align columns to the start (left)
+  gap: 20px; // Add some space between the columns
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; // Align items to the start (left) within each column
+}
+.numberBoxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; // Adds some space between the number boxes
+}
+
+.commonLabel {
+  margin-top: 40px;
+  font-size: 20px;
+  color: #007fa3;
+}
+
+.groupContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust based on your design */
 }

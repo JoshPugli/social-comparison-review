@@ -20,7 +20,7 @@
   }
 
   .section {
-    margin-right: 5vw;
+    margin-right: 3vw;
     font-size: 18px;
     // Add any additional styles you want for each section
   }
@@ -31,7 +31,7 @@
     justify-content: flex-start; // Align image to the left
     height: 150px; // Adjust height to give more space for the logo
     flex-shrink: 0; // Prevent the logo from shrinking
-    margin-right: 7.5vw;
+    margin-right: 5vw;
 
     img {
       height: 100%; // Logo will fill the height of its container

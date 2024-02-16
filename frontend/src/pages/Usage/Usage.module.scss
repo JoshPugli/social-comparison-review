@@ -1,14 +1,13 @@
 .container {
   display: flex;
   flex-direction: column;
-
+  width: 50vw;
 }
 
 .container h1 {
   font-size: 40px;
   opacity: 0.8;
   color: black;
-  margin-bottom: 0;
 }
 
 .facebookColor {
@@ -66,4 +65,17 @@
 
 .selected {
   background-color: #dedede; // Example selected color, adjust as needed
+}
+
+.groupContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust based on your design */
+}
+
+.commonLabel {
+  margin-top: 40px;
+  font-size: 20px;
+  color: #007fa3;
 }

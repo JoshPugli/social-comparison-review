@@ -4,15 +4,27 @@ import HeaderBar from "../../components/HeaderBar/HeaderBar";
 import Footer from "../../components/Footer/Footer";
 import Platform from "../Platform/Platform";
 import Usage from "../Usage/Usage";
-import Issue from "../Issue/Issue";
+import Thought from "../Thought/Thought";
 import Distortions from "../Distortions/Distortions";
 import Reframe from "../Reframe/Reframe";
+import Situation from "../Situation/Situation";
+import Emotion from "../Emotion/Emotion";
+import Survey from "../Survey/Survey";
+import { stages } from "../../assets/variables";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const stages = ["Platform", "Usage", "Issue", "Distortions", "Reframe"];
-  const [selections, setSelections] = useState(Array(5).fill(null));
-  const components = [Platform, Usage, Issue, Distortions, Reframe];
+  const [selections, setSelections] = useState(Array(stages.length).fill(null));
+  const components = [
+    Platform,
+    Usage,
+    Thought,
+    Emotion,
+    Situation,
+    Distortions,
+    Reframe,
+    Survey,
+  ];
   const componentProps = {
     Platform: { selections, setSelections, currentPage },
     Usage: {
@@ -21,7 +33,18 @@ const Home = () => {
       currentPage,
       app: selections[0],
     },
-    Issue: {
+    Thought: {
+      selections,
+      setSelections,
+      currentPage,
+      app: selections[0],
+    },
+    Emotion: {
+      selections,
+      setSelections,
+      currentPage,
+    },
+    Situation: {
       selections,
       setSelections,
       currentPage,
@@ -33,6 +56,27 @@ const Home = () => {
     Reframe: {
       /* Props for Reframe */
     },
+    Survey: {
+      /* Props for Survey */
+    },
+  };
+
+  const canContinue = () => {
+    // Check if the current page is Emotion and all necessary inputs have values
+    if (stages[currentPage] === "Emotion") {
+      // Assuming selections for Emotion are stored as an object at the currentPage index
+      // And contains keys like beliefRating, emotion, and emotionIntensity
+      const emotionSelections = selections[currentPage];
+      return (
+        emotionSelections &&
+        emotionSelections.beliefRating &&
+        emotionSelections.emotion &&
+        emotionSelections.emotionIntensity
+      );
+    } else {
+      // For other pages, just check if there is a selection
+      return selections[currentPage] !== null && selections[currentPage] != "";
+    }
   };
 
   const CurrentComponent = components[currentPage];
@@ -55,7 +99,7 @@ const Home = () => {
       <Footer
         onBack={handleBack}
         onForward={handleForward}
-        canContinue={selections[currentPage] !== null && currentPage < 4}
+        canContinue={canContinue() && currentPage < stages.length - 1}
         canGoBack={currentPage > 0}
       />
     </div>
