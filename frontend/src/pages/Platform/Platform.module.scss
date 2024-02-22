@@ -1,4 +1,4 @@
-// Platform.module.scss
+ 
 .platformContainer {
   display: flex;
   flex-direction: row;
@@ -15,20 +15,20 @@
 
 .platform {
   cursor: pointer;
-  padding: 20px 10px; // Taller than wide
+  padding: 20px 10px;  
   height: 350px;
   width: 200px;
   margin: 20px;
   background-color: #fff;
   color: rgb(69, 69, 69);
   border-radius: 10px;
-  flex: 1; // Ensure they share available space
+  flex: 1;  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  transition: box-shadow 0.3s, color 0.3s; // Smooth transition for background and text color change
+  transition: box-shadow 0.3s, color 0.3s;  
 }
 
 .selected {
@@ -42,7 +42,7 @@
 }
 
 .icon {
-  font-size: 60px; // Or use width and height for SVG icons
+  font-size: 60px;  
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -53,34 +53,34 @@
   font-weight: 600;
 }
 
-// Define specific color schemes for each platform
+ 
 .facebookColor {
-  color: #4267b2; // Facebook's color
+  color: #4267b2;  
 }
 
 .twitterColor {
-  color: #1da1f2; // Twitter's color
+  color: #1da1f2;  
 }
 
 .redditColor {
-  color: #ff5700; // Reddit's color
+  color: #ff5700;  
 }
 
 .snapchatColor {
-  color: #fffc00; // Snapchat's color
+  color: #fffc00;  
 }
 
 .tiktokColor {
-  color: #000000; // TikTok's color
+  color: #000000;  
 }
 
 .linkedinColor {
-  color: #0077b5; // LinkedIn's color
+  color: #0077b5;  
 }
 
 .icon,
 .platformText {
-  transition: opacity 0.3s ease; // Adjust time as needed
+  transition: opacity 0.3s ease;  
 }
 
 .platformTextWrapper {

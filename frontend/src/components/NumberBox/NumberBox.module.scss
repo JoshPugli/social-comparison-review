@@ -1,26 +1,24 @@
 .numberBox {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    margin: 5px;
-    padding: 10px;
-    height: 35px;
-    width: 40px;
-    border: 1px solid #1e3765; /* Example styling, adjust as needed */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background-color and transform */
-  }
-  
-  .numberBox:hover {
-    background-color: #1e3765; /* Change as needed for hover effect */
-    color: white; /* Change as needed for hover effect */
-  }
-  
-  .selected {
-    background-color: #1e3765; /* Example styling, adjust as needed */
-    color: white;
-    /* Ensure the transition effect applies to selected boxes as well */
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 10px;
+  height: 35px;
+  width: 40px;
+  border: 1px solid #1e3765;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.numberBox:hover {
+  background-color: #1e3765;
+  color: white;
+}
+
+.selected {
+  background-color: #1e3765;
+  color: white;
+  transition: background-color 0.3s, transform 0.3s;
+}

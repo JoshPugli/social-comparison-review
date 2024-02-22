@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Platform.module.scss";
-import { Icon } from "@iconify/react";
-import { MdiInstagram } from "../../assets/icons/icons";
 import { platforms } from "../../assets/variables";
 
 const Platform = ({ selections, setSelections, currentPage }) => {
   let prev_selection = platforms.find(
     (platform) => platform.name === selections[currentPage]
   );
-  const [selectedPlatform, setSelectedPlatform] = useState(prev_selection ? prev_selection.id : null);
+  const [selectedPlatform, setSelectedPlatform] = useState(
+    prev_selection ? prev_selection.id : null
+  );
 
   useEffect(() => {
     // Update the selections array whenever the selectedOption changes
@@ -29,7 +29,7 @@ const Platform = ({ selections, setSelections, currentPage }) => {
   return (
     <div>
       <div className={styles.platformContainer}>
-        <h1>Which app below often leaves you feeling negative? </h1>
+        <h1 className="h1">Which app below often leaves you feeling negative? </h1>
       </div>
       <div className={styles.platformContainer}>
         {platforms.map((platform) => (

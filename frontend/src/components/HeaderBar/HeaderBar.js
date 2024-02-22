@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import styles from "./HeaderBar.module.scss";
-import UofT from "../../assets/images/uoft_large.png";
+import UofT from "../../assets/images/uoft_large (1).png";
 
 const HeaderBar = ({ progress, sections }) => {
   const sectionsRefs = useRef(sections.map(() => React.createRef()));

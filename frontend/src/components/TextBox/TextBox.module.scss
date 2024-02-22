@@ -1,24 +1,23 @@
 .textBox {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;  
+  align-items: center;  
   margin: 5px;
   padding: 10px;
-  border: 1px solid #1e3765; /* Example styling, adjust as needed */
+  border: 1px solid #1e3765;  
   border-radius: 5px;
   cursor: pointer;
   color: black;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background-color and transform */
+  transition: background-color 0.3s, color 0.3s;  
 }
 
 .textBox:hover {
-  background-color: #1e3765; /* Change as needed for hover effect */
-  color: white; /* Change as needed for hover effect */
+  background-color: #1e3765;  
+  color: white;  
 }
 
 .selected {
-  background-color: #1e3765; /* Example styling, adjust as needed */
+  background-color: #1e3765;  
   color: white;
-  /* Ensure the transition effect applies to selected boxes as well */
   transition: background-color 0.3s, transform 0.3s;
 }

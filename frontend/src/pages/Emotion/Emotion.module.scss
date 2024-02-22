@@ -1,8 +1,8 @@
 .container {
-  display: flex; // Make the container a flex container
-  flex-direction: column; // Stack the children vertically
-  align-items: center; // Center the children horizontally
-  align-items: flex-start; // Align items to the start (left)
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  align-items: flex-start;  
   width: 50vw;
 }
 
@@ -20,37 +20,37 @@
 }
 
 .thoughtInput {
-  width: 100%; // Take up the full container width
-  padding: 10px; // Add some padding inside the text box
-  margin-top: 20px; // Space between the title and the text area
-  border: 1px solid #ccc; // A light border
-  border-radius: 4px; // Rounded corners
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); // Inner shadow for depth
-  resize: vertical; // Allow vertical resizing only
+  width: 100%;  
+  padding: 10px;  
+  margin-top: 20px;  
+  border: 1px solid #ccc;  
+  border-radius: 4px;  
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  
+  resize: vertical;  
 }
 
 .facebookColor {
-  color: #4267b2; // Facebook's color
+  color: #4267b2;  
 }
 
 .twitterColor {
-  color: #1da1f2; // Twitter's color
+  color: #1da1f2;  
 }
 
 .redditColor {
-  color: #ff5700; // Reddit's color
+  color: #ff5700;  
 }
 
 .snapchatColor {
-  color: #fffc00; // Snapchat's color
+  color: #fffc00;  
 }
 
 .tiktokColor {
-  color: #000000; // TikTok's color
+  color: #000000;  
 }
 
 .linkedinColor {
-  color: #0077b5; // LinkedIn's color
+  color: #0077b5;  
 }
 
 .instagramColor {
@@ -69,15 +69,15 @@
 
 .columns {
   display: flex;
-  flex-direction: column; // Ensure columns are side-by-side
-  justify-content: flex-start; // Align columns to the start (left)
-  gap: 20px; // Add some space between the columns
+  flex-direction: column;  
+  justify-content: flex-start;  
+  gap: 20px;  
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; // Align items to the start (left) within each column
+  align-items: flex-start;  
 }
 .numberBoxes {
   display: flex;

@@ -8,8 +8,8 @@
   left: 0;
   right: 0;
   padding: 0px 400px;
-  z-index: 1000; // Ensure it's above other elements
-  height: 150px; // Set a fixed height for the header
+  z-index: 1000;  
+  height: 150px;  
 }
 
 .forwardButton {
@@ -27,10 +27,10 @@
   }
 
   &:disabled {
-    background-color: #cccccc; // Light gray, adjust as needed
-    color: #666666; // Darker gray to indicate the button is disabled
-    cursor: not-allowed; // Shows a 'not allowed' cursor on hover
-    opacity: 0.7; // Optionally reduce opacity to make it look inactive
+    background-color: #cccccc;  
+    color: #666666;  
+    cursor: not-allowed;  
+    opacity: 0.7;  
   }
 }
 
@@ -49,31 +49,30 @@
   }
 
   &:disabled {
-    color: #666666; // Darker gray to indicate the button is disabled
-    cursor: not-allowed; // Shows a 'not allowed' cursor on hover
-    opacity: 0.7; // Optionally reduce opacity to make it look inactive
+    color: #666666;  
+    cursor: not-allowed;  
+    opacity: 0.7;  
   }
 }
 
 .backButton,
 .forwardButton {
-  // Your existing button styles...
   display: flex;
-  align-items: center; // Center the items vertically
-  justify-content: center; // Center the content if needed
+  align-items: center;  
+  justify-content: center;  
 }
 
 .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(1px); // Shift the arrow down a bit
+  transform: translateY(1px);  
 }
 
 .backIcon {
-  margin-right: 10px; // Increase distance between arrow and text for the back button
+  margin-right: 10px;  
 }
 
 .forwardIcon {
-  margin-left: 10px; // Increase distance between arrow and text for the forward button
+  margin-left: 10px;  
 }
