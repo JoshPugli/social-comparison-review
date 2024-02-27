@@ -29,7 +29,9 @@ const Platform = ({ selections, setSelections, currentPage }) => {
   return (
     <div>
       <div className={styles.platformContainer}>
-        <h1 className="h1">Which app below often leaves you feeling negative? </h1>
+        <h1 className="h1">
+          Which app below often leaves you feeling negative?{" "}
+        </h1>
       </div>
       <div className={styles.platformContainer}>
         {platforms.map((platform) => (
@@ -44,7 +46,6 @@ const Platform = ({ selections, setSelections, currentPage }) => {
                 : ""
             }`}
           >
-            {/* Render both icons for Instagram but control visibility */}
             {platform.id === 3 ? (
               <>
                 <span
@@ -59,8 +60,6 @@ const Platform = ({ selections, setSelections, currentPage }) => {
                 <span
                   className={styles.icon}
                   style={{
-                    position: "absolute",
-                    marginBottom: "55px",
                     opacity: selectedPlatform === platform.id ? 1 : 0,
                     transition: "opacity 0.3s ease-out",
                   }}

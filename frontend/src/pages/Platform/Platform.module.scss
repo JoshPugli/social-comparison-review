@@ -42,15 +42,18 @@
 }
 
 .icon {
-  font-size: 60px;  
+  font-size: 2em;  
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
   justify-content: center;
+  position: absolute;
 }
 
 .platformText {
   font-weight: 600;
+  position: absolute;
+  margin-top: 2em;
 }
 
  
@@ -84,14 +87,15 @@
 }
 
 .platformTextWrapper {
-  position: relative;
-  display: inline-block;
+  position: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .instagramGradientText {
   position: absolute;
-  top: 0;
-  left: 0;
+  margin-top: 2em;
   background: linear-gradient(
     45deg,
     #f09433,
