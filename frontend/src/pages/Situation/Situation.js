@@ -38,9 +38,9 @@ const Situation = ({ selections, setSelections, currentPage, app }) => {
         id="standard-textarea"
         label="Explain the situation here..."
         multiline
-        variant="outlined" // Changed to 'outlined' for better visibility
+        variant="outlined" 
         fullWidth
-        value={typeof inputValue === "string" ? inputValue : ""} // TextField expects a string, ensure compatibility
+        value={typeof inputValue === "string" ? inputValue : ""} 
         onChange={handleTextFieldChange}
       />
     </div>

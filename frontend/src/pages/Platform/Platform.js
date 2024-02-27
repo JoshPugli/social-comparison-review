@@ -11,13 +11,12 @@ const Platform = ({ selections, setSelections, currentPage }) => {
   );
 
   useEffect(() => {
-    // Update the selections array whenever the selectedOption changes
     const platform = platforms.find(
       (platform) => platform.id === selectedPlatform
     );
     if (platform) {
       const updatedSelections = [...selections];
-      updatedSelections[currentPage] = platform.name; // Assign the platform's name to the current page in selections
+      updatedSelections[currentPage] = platform.name; 
       setSelections(updatedSelections);
     }
   }, [selectedPlatform, selections, setSelectedPlatform]);
