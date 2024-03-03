@@ -1,78 +1,163 @@
-.footer {
-  background-color: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0px 400px;
-  z-index: 1000;  
-  height: 150px;  
-}
-
-.forwardButton {
-  padding: 20px 30px;
-  font-size: 20px;
-  background-color: #4892fb;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: darken(#4892fb, 10%);
+@media (min-width: 1100px) {
+  .footer {
+    background-color: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0px 400px;
+    z-index: 1000;  
+    height: 150px;  
   }
-
-  &:disabled {
-    background-color: #cccccc;  
-    color: #666666;  
-    cursor: not-allowed;  
-    opacity: 0.7;  
+  
+  .forwardButton {
+    padding: 20px 30px;
+    font-size: 20px;
+    background-color: #4892fb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: darken(#4892fb, 10%);
+    }
+  
+    &:disabled {
+      background-color: #cccccc;  
+      color: #666666;  
+      cursor: not-allowed;  
+      opacity: 0.7;  
+    }
   }
-}
-
-.backButton {
-  padding: 20px 30px;
-  font-size: 20px;
-  background-color: none;
-  background: none;
-  color: rgb(149, 149, 149);
-  border: none;
-  cursor: pointer;
-  transition: color 0.3s;
-
-  &:hover {
-    color: rgb(29, 29, 29);
+  
+  .backButton {
+    padding: 20px 30px;
+    font-size: 20px;
+    background-color: none;
+    background: none;
+    color: rgb(149, 149, 149);
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  
+    &:hover {
+      color: rgb(29, 29, 29);
+    }
+  
+    &:disabled {
+      color: #666666;  
+      cursor: not-allowed;  
+      opacity: 0.7;  
+    }
   }
-
-  &:disabled {
-    color: #666666;  
-    cursor: not-allowed;  
-    opacity: 0.7;  
+  
+  .backButton,
+  .forwardButton {
+    display: flex;
+    align-items: center;  
+    justify-content: center;  
   }
+  
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(1px);  
+  }
+  
+  .backIcon {
+    margin-right: 10px;  
+  }
+  
+  .forwardIcon {
+    margin-left: 10px;  
+  }
+  
 }
 
-.backButton,
-.forwardButton {
-  display: flex;
-  align-items: center;  
-  justify-content: center;  
-}
-
-.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(1px);  
-}
-
-.backIcon {
-  margin-right: 10px;  
-}
-
-.forwardIcon {
-  margin-left: 10px;  
+@media (max-width: 1100px){
+  .footer {
+    background-color: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    right: 25px;
+    padding: 0px 0px;
+    z-index: 1000;  
+    height: 150px;  
+  }
+  
+  .forwardButton {
+    padding: 20px 30px;
+    font-size: 20px;
+    background-color: #4892fb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: darken(#4892fb, 10%);
+    }
+  
+    &:disabled {
+      background-color: #cccccc;  
+      color: #666666;  
+      cursor: not-allowed;  
+      opacity: 0.7;  
+    }
+  }
+  
+  .backButton {
+    padding: 20px 30px;
+    font-size: 20px;
+    background-color: none;
+    background: none;
+    color: rgb(149, 149, 149);
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  
+    &:hover {
+      color: rgb(29, 29, 29);
+    }
+  
+    &:disabled {
+      color: #666666;  
+      cursor: not-allowed;  
+      opacity: 0.7;  
+    }
+  }
+  
+  .backButton,
+  .forwardButton {
+    display: flex;
+    align-items: center;  
+    justify-content: center;  
+  }
+  
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(1px);  
+  }
+  
+  .backIcon {
+    margin-right: 10px;  
+  }
+  
+  .forwardIcon {
+    margin-left: 10px;  
+  }
+  
 }
