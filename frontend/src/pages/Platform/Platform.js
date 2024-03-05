@@ -41,7 +41,7 @@ const Platform = ({ selections, setSelections, currentPage }) => {
       <div className={styles.platformContainer}>
         <h1 className="h1"
           style={
-            screenWidth > 999
+            screenWidth > pcWidth
             ?
             { 
               width: "75%"
@@ -49,7 +49,9 @@ const Platform = ({ selections, setSelections, currentPage }) => {
             :
             {
               width: `calc(${screenWidth}px - 40px)`,
-              fontSize: "2rem"
+              fontSize: "2rem",
+              padding: "0 0 50px 0",
+              alignContent: "center"
             }
           }
         >
