@@ -5,11 +5,26 @@
   align-items: center;
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0px 400px;
   z-index: 1000;  
   height: 150px;  
+}
+
+@media (min-width: 1100px){
+  .footer {
+    left: 0;
+    right: 0;
+    padding: 0px 400px;
+  }
+
+}
+
+@media (max-width: 1100px){
+  .footer {
+    left: 25px;
+    right: 25px;
+    padding: 0px 0px;
+  }
+
 }
 
 .forwardButton {
@@ -34,6 +49,12 @@
   }
 }
 
+@media (max-width: 1100px){
+  .forwardButton {
+    font-size: 16px;
+  }
+}
+
 .backButton {
   padding: 20px 30px;
   font-size: 20px;
@@ -55,6 +76,12 @@
   }
 }
 
+@media (max-width: 1100px){
+  .backButton {
+    font-size: 16px;
+  }
+}
+
 .backButton,
 .forwardButton {
   display: flex;
@@ -70,9 +97,9 @@
 }
 
 .backIcon {
-  margin-right: 10px;  
+  margin-right: 10px;
 }
 
 .forwardIcon {
-  margin-left: 10px;  
+  margin-left: 10px;
 }

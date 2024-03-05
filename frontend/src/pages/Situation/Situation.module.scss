@@ -11,11 +11,31 @@
     opacity: 0.8;
     color: black;
   }
+
+  @media (max-width: 1100px) {
+    .container {
+      width: 85vw;
+      overflow: scroll;
+      height: 50vh;
+    }
+
+    .container h1 {
+      font-size: 28px;
+      padding-bottom: 15px;
+    }
+
+  }
   
   .subheader {
     font-size: 20px;
     color: rgb(69, 69, 69);
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 1100px) {
+    .subheader {
+      font-size: 16px;
+    }
   }
   
   .thoughtInput {

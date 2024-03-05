@@ -53,6 +53,7 @@ const Emotion = ({ selections, setSelections, currentPage }) => {
             variant="outlined"
             fullWidth
             value={emotionData.emotion}
+            style={{ width: "95%"}}
             onChange={(e) => handleInputChange("emotion", e.target.value)}
           />
         </div>
