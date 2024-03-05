@@ -7,6 +7,8 @@ import { useScreenWidth } from '../../utils/screenWidth';
 // use preset pc width
 import { usePCWidth, useHeaderWidth, useIconWidth } from "../../utils/widths";
 
+// note: PC Width is default to 1100px
+
 const HeaderBar = ({ progress, sections }) => {
   const sectionsRefs = useRef(sections.map(() => React.createRef()));
   const logoRef = useRef();
@@ -40,7 +42,7 @@ const HeaderBar = ({ progress, sections }) => {
     };
     window.addEventListener('load', calculateProgressBarPosition);
     return () => window.removeEventListener('load', calculateProgressBarPosition);
-  }, [progress, sections, screenWidth]); 
+  }, [progress, sections, screenWidth, pcWidth]); 
   
   // changed progress bar to depend on screen width
   useEffect(() => {
@@ -60,7 +62,7 @@ const HeaderBar = ({ progress, sections }) => {
       setProgressBarX(screenWidth * ((progress + 1) / sections.length));
     }
 
-  }, [progress, sections, screenWidth]);
+  }, [progress, sections, screenWidth, pcWidth]);
 
   return (
 
