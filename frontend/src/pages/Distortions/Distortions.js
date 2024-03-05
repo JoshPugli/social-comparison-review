@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
-import "./Distortions.module.scss";
+import styles from "./Distortions.module.scss";
 
 const Platform = () => {
   return (
-    <div style={{ fontSize: "30px", marginTop: "30vh" }}>
+    <div className={styles.prompt}>
      Generated likely distortions from custom model... chose which sounds most like you...
     </div>
   );

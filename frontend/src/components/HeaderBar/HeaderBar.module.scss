@@ -78,4 +78,15 @@
     color: rgb(149, 149, 149);  
     transition: color 0.3s;  
   }
+
+  @media (max-width: 1100px){
+    .inactive {
+      display: none;
+    }
+  }
+
+  .percentage {
+    color: rgb(200, 200, 200);  
+    transition: color 0.3s;
+  }
 }

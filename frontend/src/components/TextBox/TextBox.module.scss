@@ -11,6 +11,12 @@
   transition: background-color 0.3s, color 0.3s;  
 }
 
+@media (max-width: 1100px) {
+  .textBox {
+    font-size: 14px;  
+  }
+}
+
 .textBox:hover {
   background-color: #1e3765;  
   color: white;  
