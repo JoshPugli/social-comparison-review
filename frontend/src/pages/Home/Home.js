@@ -96,12 +96,6 @@ const Home = () => {
       <div className="home-container">
         {React.createElement(CurrentComponent, props)}
       </div>
-      <Footer
-        onBack={handleBack}
-        onForward={handleForward}
-        canContinue={canContinue() && currentPage < stages.length - 1}
-        canGoBack={currentPage > 0}
-      />
     </div>
   );
 };
