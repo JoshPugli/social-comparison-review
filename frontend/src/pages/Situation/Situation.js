@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 const Situation = ({ selections, setSelections, currentPage, app }) => {
   // Combine the thought and selectedThought states into one to synchronize their values
   const [inputValue, setInputValue] = useState(selections[currentPage] || "");
-  let color = platforms.find((platform) => platform.name === app).colorClass;
+  // let color = platforms.find((platform) => platform.name === app).colorClass;
 
   const handleInputValueChange = (newValue) => {
     setInputValue(newValue); 
@@ -24,12 +24,11 @@ const Situation = ({ selections, setSelections, currentPage, app }) => {
     <div className={styles.container}>
       <h1>
         What's a recent situation when using{" "}
-        <span className={styles[color]}>{app}</span> that led to this negative
+         that led to this negative
         thought?
       </h1>
       <div className={styles.subheader}>
-        Think about a moment while using{" "}
-        <span className={styles[color]}>{app}</span> that made you feel
+        Think about a moment while using that made you feel
         negatively. Was it seeing someone's post that made you feel badly? Or
         perhaps a particularily negative comment or discussion?
         Describe the event as specifically as you can.

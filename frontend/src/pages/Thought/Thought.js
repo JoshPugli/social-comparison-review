@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 const Thought = ({ selections, setSelections, currentPage, app }) => {
   // Combine the thought and selectedThought states into one to synchronize their values
   const [inputValue, setInputValue] = useState(selections[currentPage] || "");
-  let color = platforms.find((platform) => platform.name === app).colorClass;
+  // let color = platforms.find((platform) => platform.name === app).colorClass;
 
   const handleInputValueChange = (newValue) => {
     setInputValue(newValue); // Update the combined state
@@ -28,7 +28,7 @@ const Thought = ({ selections, setSelections, currentPage, app }) => {
   return (
     <div className={styles.container}>
       <h1>
-        What is a negative thought that you have had as a result of using <span className={styles[color]}>{app}</span>?
+        What is a negative thought that you have had as a result of using?
       </h1>
       <TextField
         id="standard-textarea"

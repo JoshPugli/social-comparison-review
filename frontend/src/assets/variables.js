@@ -73,8 +73,8 @@ const thoughts = [
 ];
 
 const stages = [
-  "Platform",
-  "Usage",
+  // "Platform",
+  // "Usage",
   "Thought",
   "Emotion",
   "Situation",

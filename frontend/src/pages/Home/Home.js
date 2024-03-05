@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Home.scss";
 import HeaderBar from "../../components/HeaderBar/HeaderBar";
 import Footer from "../../components/Footer/Footer";
-import Platform from "../Platform/Platform";
-import Usage from "../Usage/Usage";
+// import Platform from "../Platform/Platform";
+// import Usage from "../Usage/Usage";
 import Thought from "../Thought/Thought";
 import Distortions from "../Distortions/Distortions";
 import Reframe from "../Reframe/Reframe";
@@ -16,8 +16,8 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
   const components = [
-    Platform,
-    Usage,
+    // Platform,
+    // Usage,
     Thought,
     Emotion,
     Situation,
@@ -26,13 +26,13 @@ const Home = () => {
     Survey,
   ];
   const componentProps = {
-    Platform: { selections, setSelections, currentPage },
-    Usage: {
-      selections,
-      setSelections,
-      currentPage,
-      app: selections[0],
-    },
+    // Platform: { selections, setSelections, currentPage },
+    // Usage: {
+    //   selections,
+    //   setSelections,
+    //   currentPage,
+    //   app: selections[0],
+    // },
     Thought: {
       selections,
       setSelections,
