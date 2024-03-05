@@ -1,3 +1,11 @@
+.body {
+  max-height: 80vw;
+  margin-top: 7vw;
+  margin-bottom: 7vw;
+  overflow-y: auto;
+}
+
+
 .container {
   display: flex;  
   flex-direction: column;  
@@ -7,20 +15,22 @@
 }
 
 .container h1 {
-  font-size: 30px;
+  font-size: 1.75vw;
   opacity: 0.8;
   color: black;
 }
 
 .subheader {
-  margin-top: -10px;
-  font-size: 20px;
+  margin-top: 0px;
+  font-size: 0.9vw;
   color: rgb(69, 69, 69);
   margin-bottom: 20px;
+  opacity: 0.7;
 }
 
 .thoughtInput {
-  width: 100%;  
+  width: 100%;
+  height: 5vw;  
   padding: 10px;  
   margin-top: 20px;  
   border: 1px solid #ccc;  
@@ -84,4 +94,5 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+ 
 }
