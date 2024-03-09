@@ -1,120 +1,119 @@
 .container {
-    display: flex;  
-    flex-direction: column;  
-    align-items: center;  
-    align-items: flex-start;  
-    width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  width: 50vw;
+}
+
+.container h1 {
+  font-size: 2.75em;
+  opacity: 0.8;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1100px) {
+  .container {
+    width: 85vw;
+    overflow: scroll;
+    height: 50vh;
   }
-  
+
   .container h1 {
-    font-size: 40px;
-    opacity: 0.8;
-    color: black;
+    font-size: 28px;
+    padding-bottom: 15px;
   }
+}
 
-  @media (max-width: 1100px) {
-    .container {
-      width: 85vw;
-      overflow: scroll;
-      height: 50vh;
-    }
+.subheader {
+  font-size: 1.5em;
+  color: rgb(90, 90, 90);
+  margin-bottom: 1.5rem;
+}
 
-    .container h1 {
-      font-size: 28px;
-      padding-bottom: 15px;
-    }
-
-  }
-  
+@media (max-width: 1100px) {
   .subheader {
-    font-size: 20px;
-    color: rgb(69, 69, 69);
-    margin-bottom: 20px;
+    font-size: 16px;
   }
+}
 
-  @media (max-width: 1100px) {
-    .subheader {
-      font-size: 16px;
-    }
-  }
-  
-  .thoughtInput {
-    width: 100%;  
-    padding: 10px;  
-    margin-top: 20px;  
-    border: 1px solid #ccc;  
-    border-radius: 4px;  
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  
-    resize: vertical;  
-  }
-  
-  .facebookColor {
-    color: #4267b2;  
-  }
-  
-  .twitterColor {
-    color: #1da1f2;  
-  }
-  
-  .redditColor {
-    color: #ff5700;  
-  }
-  
-  .snapchatColor {
-    color: #fffc00;  
-  }
-  
-  .tiktokColor {
-    color: #000000;  
-  }
-  
-  .linkedinColor {
-    color: #0077b5;  
-  }
-  
-  .instagramColor {
-    background: linear-gradient(
-      45deg,
-      #f09433,
-      #e6683c,
-      #dc2743,
-      #cc2366,
-      #bc1888
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent; /* Hide the text color to show the gradient */
-  }
-  
-  .columns {
-    display: flex;
-    flex-direction: column;  
-    justify-content: flex-start;  
-    gap: 20px;  
-  }
-  
-  .column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;  
-  }
-  .numberBoxes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;  
-  }
-  
-  .commonLabel {
-    margin-top: 40px;
-    font-size: 20px;
-    color: #007fa3;
-  }
-  
-  .groupContainer {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Adjust based on your design */
-  }
-  
+.thoughtInput {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  resize: vertical;
+}
+
+.facebookColor {
+  color: #4267b2;
+}
+
+.twitterColor {
+  color: #1da1f2;
+}
+
+.redditColor {
+  color: #ff5700;
+}
+
+.snapchatColor {
+  color: #fffc00;
+}
+
+.tiktokColor {
+  color: #000000;
+}
+
+.linkedinColor {
+  color: #0077b5;
+}
+
+.instagramColor {
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Hide the text color to show the gradient */
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.numberBoxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.commonLabel {
+  margin-top: 40px;
+  font-size: 20px;
+  color: #007fa3;
+}
+
+.groupContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust based on your design */
+}

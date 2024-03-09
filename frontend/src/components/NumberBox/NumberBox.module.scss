@@ -1,4 +1,6 @@
 .numberBox {
+  font-size: 1.5em;
+  color: #1e3765;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +8,7 @@
   height: 4rem;
   width: 4rem;
   border: 1px solid #1e3765;
-  border-radius: 1em;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }

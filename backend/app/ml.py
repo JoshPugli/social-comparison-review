@@ -54,9 +54,9 @@ def load_data():
         lambda x: get_sentence_emb(x.situation + " " + x.thought), axis=1
     )
     return (
-        training_grouped_df,
-        training_thought_record_ids,
         training_situation_and_thought_emb,
+        training_thought_record_ids,
+        training_grouped_df,
     )
 
 
@@ -179,4 +179,16 @@ def generate_reframe(
     return curr_response_reframing_str
 
 
-print(generate_reframe("I am feeling very anxious", "I am going to fail my exams"))
+trained_situation_and_thought_emb, trained_thought_record_ids, trained_grouped_df = (
+    load_data()
+)
+
+top_k = get_top_k_matches(
+    "I got a bad grade on my test",
+    "I am a failure",
+    trained_situation_and_thought_emb,
+    trained_thought_record_ids,
+    trained_grouped_df,
+)
+
+print(top_k)

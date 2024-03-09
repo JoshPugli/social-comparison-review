@@ -27,19 +27,19 @@ const Thought = ({ selections, setSelections, currentPage, app }) => {
 
   return (
     <div className={styles.container}>
-      <h1>
-        What is a negative thought that you have had as a result of using?
-      </h1>
+      <h1>What negative thought are you struggling with right now?</h1>
       <TextField
         id="standard-textarea"
         label="Type your thought here..."
         multiline
         variant="outlined" // Changed to 'outlined' for better visibility
         fullWidth
-        value={typeof inputValue === 'string' ? inputValue : ''} // TextField expects a string, ensure compatibility
+        value={typeof inputValue === "string" ? inputValue : ""} // TextField expects a string, ensure compatibility
         onChange={handleTextFieldChange}
       />
-      <div className={styles.commonLabel}>Or, choose one of these common thoughts to work on:</div>
+      <div className={styles.commonLabel}>
+        Or, choose one of these common thoughts to work on:
+      </div>
       <div className={styles.groupContainer}>
         {thoughts.map((thoughtOption) => (
           <TextBox

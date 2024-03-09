@@ -28,10 +28,7 @@ const Situation = ({ selections, setSelections, currentPage, app }) => {
         thought?
       </h1>
       <div className={styles.subheader}>
-        Think about a moment while using that made you feel
-        negatively. Was it seeing someone's post that made you feel badly? Or
-        perhaps a particularily negative comment or discussion?
-        Describe the event as specifically as you can.
+      For example, if your negative thought is "No one cares about me," the situation might be "My friend never texted me back."
       </div>
       <TextField
         id="standard-textarea"
