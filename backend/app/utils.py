@@ -108,7 +108,7 @@ def get_top_k_matches(
     curr_situation_and_thought_emb = sentence_model.encode(
         curr_situation + " " + curr_thought
     )
-    
+
     # calculate similarity scores
     situation_and_thought_scores = (
         util.dot_score(
@@ -117,7 +117,7 @@ def get_top_k_matches(
         .cpu()
         .tolist()
     )
-    
+
     # sort the scores and get the top K matches
     situation_and_thought_score_pairs = list(
         zip(training_thought_record_ids, situation_and_thought_scores)
@@ -132,5 +132,5 @@ def get_top_k_matches(
     matched_user_response_df = training_grouped_df[
         training_grouped_df["thought_record_id"].isin(matched_thought_record_ids)
     ]
-    
+
     return matched_user_response_df
