@@ -21,6 +21,8 @@ class TopKDistortionsView(APIView):
             )
 
             matches_df = get_top_k_matches(curr_situation, curr_thought, K)
+            
+            distortions = [item for sublist in [x.split(",") for x in matches_df["thinking_traps_addressed"].to_list()] for item in sublist]
 
             # Convert DataFrame to JSON (ensure your DataFrame is in a format that can be easily converted to JSON)
             matches_json = matches_df.to_json(orient="records")
