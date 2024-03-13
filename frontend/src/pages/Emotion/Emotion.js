@@ -59,7 +59,7 @@ const Emotion = ({ selections, setSelections, currentPage }) => {
         </div>
 
         <div className={styles.column}>
-          <h1>On a scale from 1 to 10, how strong is this emotion <span style={{color: "#007FA3"}}>{emotionData.emotion ? `(${emotionData.emotion})` : ""}</span>?</h1>
+          <h1>On a scale from 1 to 10, how strong is this emotion<span style={{color: "#007FA3"}}>{emotionData.emotion ?` (${emotionData.emotion})`:""}</span>?</h1>
           <div className={styles.subheader}>1: Not strong; 10: Extremely strong</div>
           <div className={styles.numberBoxes}>
             {renderNumberBoxes("emotionIntensity")}
