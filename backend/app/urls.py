@@ -1,6 +1,6 @@
 from django.urls import path
-from views import TopKDistortionsView
+from views import GetDistortionsView
 
 urlpatterns = [
-    path("distortions/", TopKDistortionsView.as_view(), name="top-k-distortions"),
+    path("distortions/", GetDistortionsView.as_view(), name="distortions"),
 ]

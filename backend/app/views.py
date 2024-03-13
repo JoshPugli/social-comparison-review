@@ -3,30 +3,22 @@ from django.core.cache import cache
 from sentence_transformers import SentenceTransformer
 from django.http import JsonResponse
 from rest_framework import status
-from .utils import get_top_k_matches  # Import your utility function
+from .utils import generate_distortions  # Import your utility function
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from serializers import TopKSerializer
+from serializers import SituationThoughtSerializer
 
 
-class TopKDistortionsView(APIView):
+class GetDistortionsView(APIView):
     def post(self, request, *args, **kwargs):
-        serializer = TopKSerializer(data=request.data)
-
+        serializer = SituationThoughtSerializer(data=request.data)
         if serializer.is_valid():
-            curr_situation, curr_thought, K = (
-                serializer.validated_data["curr_situation"],
-                serializer.validated_data["curr_thought"],
-                serializer.validated_data.get("K", 5),
+            curr_situation = serializer.validated_data["curr_situation"]
+            curr_thought = serializer.validated_data["curr_thought"]
+            distortions = generate_distortions(curr_situation, curr_thought)
+            return Response(
+                {"distortions": distortions},
+                status=status.HTTP_200_OK,
             )
-
-            matches_df = get_top_k_matches(curr_situation, curr_thought, K)
-            
-            distortions = [item for sublist in [x.split(",") for x in matches_df["thinking_traps_addressed"].to_list()] for item in sublist]
-
-            # Convert DataFrame to JSON (ensure your DataFrame is in a format that can be easily converted to JSON)
-            matches_json = matches_df.to_json(orient="records")
-
-            return Response({"matches": matches_json}, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
