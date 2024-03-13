@@ -75,11 +75,9 @@ const Distortion = ({
             one thinking traps (up to three)
           </span>
         </div>
-        {!loading && generatedDistortions.length > 0 && (
           <div className={styles.descriptiveText}>
             Thinking traps we think you might be falling for:
           </div>
-        )}
         {!loading && generatedDistortions.length === 0 && (
           <div className={styles.descriptiveText}>
             We could not find thinking traps associated with your thought <br />{" "}
@@ -89,7 +87,7 @@ const Distortion = ({
       </div>
       <div className={styles.distortions}>
         {loading
-          ? Array(4) // Assuming you want to display 3 loading cards
+          ? Array(3) // Assuming you want to display 3 loading cards
               .fill()
               .map((_, index) => <DistortionLoadingCard key={index} />)
           : generatedDistortions.map((distortion, index) => (
