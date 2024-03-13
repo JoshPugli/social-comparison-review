@@ -13,7 +13,7 @@ import Survey from "../Survey/Survey";
 import { stages } from "../../assets/constants";
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(3); // Change this to 0 to start from the beginning
+  const [currentPage, setCurrentPage] = useState(0); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
   const components = [
     Thought,
