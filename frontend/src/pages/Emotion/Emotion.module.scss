@@ -1,3 +1,5 @@
+@import "../../assets/colors.scss";
+
 .container {
   display: flex;  
   flex-direction: column;  
@@ -24,10 +26,8 @@
 }
 
 .container h1 {
-  font-size: 2em;
-  opacity: 0.8;
-  color: black;
-  margin-bottom: .5rem;
+  font-size: 30px;
+  color: $header-grey;
 }
 
 @media (max-width: 1100px) {
@@ -39,7 +39,7 @@
 
 .subheader {
   font-size: 1.5em;
-  color: #007FA3;
+  color: $subheader-grey;
   margin-bottom: 1.5rem;
 }
 

@@ -1,3 +1,5 @@
+@import "../../assets/colors.scss";
+
 .headerBar {
   background-color: #ffffff;
   display: flex;
@@ -55,7 +57,7 @@
   }
 
   .activeBar {
-    background-color: #1e3765;
+    background-color: $primary;
   }
 
   @media (min-width: 1100px){
@@ -98,19 +100,19 @@
 
   .circularProgressContainer {
     position: absolute;
-    right: 20px; /* Adjust as necessary */
+    right: 20px; 
     top: 50%;
     transform: translateY(-50%);
   }
   
   .circularProgress {
-    width: 50px; /* Adjust size as necessary */
-    height: 50px; /* Adjust size as necessary */
+    width: 50px; 
+    height: 50px; 
   }
   
   .bg {
     fill: none;
-    stroke: #f1f1f1; /* Background circle color */
+    stroke: #f1f1f1; 
     stroke-width: 3.8;
   }
   
@@ -118,13 +120,13 @@
     fill: none;
     stroke-width: 3.8;
     stroke-linecap: round;
-    stroke: #1e3765; /* Progress circle color */
-    transition: stroke-dasharray 0.5s ease-out; /* Smooth transition for stroke-dasharray */
+    stroke: #1e3765; 
+    transition: stroke-dasharray 0.5s ease-out; 
   }
   
   .percentageText {
-    fill: #1e3765; /* Text color */
-    font-size: 66%; /* Adjust text size */
+    fill: #1e3765; 
+    font-size: 66%; 
     font-weight: 600;
     text-anchor: middle;
     alignment-baseline: middle;

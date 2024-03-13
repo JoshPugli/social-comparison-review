@@ -1,16 +1,18 @@
+@import "../../assets/colors.scss";
+
 .textBox {
   font-size: 1em;
-  color: #1e3765;
+  color: $primary;
   display: flex;
   justify-content: center;  
   align-items: center;  
   margin: 5px;
   padding: 10px;
-  border: 1px solid #1e3765;  
+  border: 1px solid $primary;  
   border-radius: 5px;
   cursor: pointer;
   color: black;
-  transition: background-color 0.3s, color 0.3s;  
+  transition: background-color 0.3s, color 0.3s, border 0.3s;  
 }
 
 @media (max-width: 1100px) {
@@ -20,12 +22,14 @@
 }
 
 .textBox:hover {
-  background-color: #1e3765;  
+  background-color: $secondary;  
   color: white;  
+  border: 1px solid $secondary;
 }
 
 .selected {
-  background-color: #1e3765;  
+  background-color: $secondary;
+  border: 1px solid $secondary;  
   color: white;
   transition: background-color 0.3s, transform 0.3s;
 }

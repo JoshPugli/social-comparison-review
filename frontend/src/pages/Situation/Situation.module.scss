@@ -1,3 +1,5 @@
+@import "../../assets/colors.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -7,9 +9,8 @@
 }
 
 .container h1 {
-  font-size: 2.75em;
-  opacity: 0.8;
-  color: black;
+  font-size: 40px;
+  color: $header-grey;
   margin-bottom: 1rem;
 }
 
@@ -28,7 +29,7 @@
 
 .subheader {
   font-size: 1.5em;
-  color: rgb(90, 90, 90);
+  color: $subheader-grey;
   margin-bottom: 1.5rem;
 }
 
@@ -112,7 +113,7 @@
 }
 
 .thought {
-  color: #1e3765;
+  color: $secondary;
 }
 
 .groupContainer {

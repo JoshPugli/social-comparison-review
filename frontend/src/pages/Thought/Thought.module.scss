@@ -1,3 +1,5 @@
+@import "../../assets/colors.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -19,8 +21,7 @@
 
 .container h1 {
   font-size: 40px;
-  opacity: 0.8;
-  color: black;
+  color: $header-grey;
   margin-bottom: 1rem;
 }
 
@@ -91,7 +92,7 @@
 .commonLabel {
   margin-top: 2rem;
   font-size: 1.5em;
-  color: #007fa3;
+  color: $secondary;
 }
 
 @media (max-width: 1100px) {
