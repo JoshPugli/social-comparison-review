@@ -63,3 +63,8 @@ Bad Request: /distortions/
 "POST /distortions/ HTTP/1.1" 400 97
 "POST /distortions/ HTTP/1.1" 200 44
 "POST /distortions/ HTTP/1.1" 200 100
+"OPTIONS /distortions/ HTTP/1.1" 200 0
+"POST /distortions/ HTTP/1.1" 200 44
+"POST /distortions/ HTTP/1.1" 200 44
+"POST /distortions/ HTTP/1.1" 200 44
+"POST /distortions/ HTTP/1.1" 200 70

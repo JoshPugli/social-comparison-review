@@ -111,7 +111,7 @@ const Distortion = ({
                   icon="iconamoon:sign-plus-bold"
                   className={styles.pmIcon}
                 />
-                Show more thinking traps{" "}
+                Show addional thinking traps{" "}
               </>
             ) : (
               <>
