@@ -42,7 +42,10 @@ def generate_distortions(situation, thought, distortion_model="ft:gpt-3.5-turbo-
             {"role": "user", "content": f"Situation: {situation}. Thought: {thought}."},
         ],
     )
-    distortions = ast.literal_eval(completion.choices[0].message.content)
+    try:
+        distortions = ast.literal_eval(completion.choices[0].message.content)
+    except SyntaxError:
+        distortions = []
 
     print("--- generating distortions took %s seconds ---" % (time.time() - start_time))
     print("Distortions: ", distortions)

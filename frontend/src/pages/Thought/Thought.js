@@ -4,7 +4,7 @@ import { platforms, thoughts, useStyles } from "../../assets/constants";
 import TextBox from "../../components/TextBox/TextBox";
 import TextField from "@material-ui/core/TextField";
 
-const Thought = ({ selections, setSelections, currentPage, app }) => {
+const Thought = ({ selections, setSelections, currentPage }) => {
   // Combine the thought and selectedThought states into one to synchronize their values
   const [inputValue, setInputValue] = useState(selections[currentPage] || "");
   // let color = platforms.find((platform) => platform.name === app).colorClass;

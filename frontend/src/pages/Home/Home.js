@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 // import Platform from "../Platform/Platform";
 // import Usage from "../Usage/Usage";
 import Thought from "../Thought/Thought";
-import Distortions from "../Distortions/Distortions";
+import Distortion from "../Distortions/Distortions";
 import Reframe from "../Reframe/Reframe";
 import Situation from "../Situation/Situation";
 import Emotion from "../Emotion/Emotion";
@@ -13,31 +13,21 @@ import Survey from "../Survey/Survey";
 import { stages } from "../../assets/constants";
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(3); // Change this to 0 to start from the beginning
+  const [currentPage, setCurrentPage] = useState(0); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
   const components = [
-    // Platform,
-    // Usage,
     Thought,
     Emotion,
     Situation,
-    Distortions,
+    Distortion,
     Reframe,
     Survey,
   ];
   const componentProps = {
-    // Platform: { selections, setSelections, currentPage },
-    // Usage: {
-    //   selections,
-    //   setSelections,
-    //   currentPage,
-    //   app: selections[0],
-    // },
     Thought: {
       selections,
       setSelections,
       currentPage,
-      app: selections[0],
     },
     Emotion: {
       selections,
@@ -48,10 +38,13 @@ const Home = () => {
       selections,
       setSelections,
       currentPage,
-      app: selections[0],
     },
-    Distortions: {
-      /* Props for Distortions */
+    Distortion: {
+      selections,
+      setSelections,
+      currentPage,
+      thought: selections[0],
+      situation: selections[2],
     },
     Reframe: {
       /* Props for Reframe */
@@ -60,6 +53,11 @@ const Home = () => {
       /* Props for Survey */
     },
   };
+
+  useEffect(() => {
+    console.log("Current page:", currentPage);
+    console.log("Selections:", selections);
+  }, [currentPage, selections]);
 
   const canContinue = () => {
     // Check if the current page is Emotion and all necessary inputs have values

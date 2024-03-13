@@ -6,7 +6,7 @@ from rest_framework import status
 from .utils import generate_distortions  # Import your utility function
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from serializers import SituationThoughtSerializer
+from .serializers import SituationThoughtSerializer
 
 
 class GetDistortionsView(APIView):

@@ -73,12 +73,10 @@ const thoughts = [
 ];
 
 const stages = [
-  // "Platform",
-  // "Usage",
   "Thought",
   "Emotion",
   "Situation",
-  "Thinking Traps",
+  "Distortion",
   "Reframe",
   "Survey",
 ];
@@ -157,7 +155,9 @@ const distortionDescriptions = {
   overgeneralizing:
     'Jumping to conclusions based on one experience. "They didn\'t text me back. Nobody ever texts me back."',
   "all-or-nothing thinking":
-    "Thinking in extremes. \"If it isn't perfect, I failed. There's no such thing as 'good enough'.\"",
+    "Thinking in extremes. \"If it isn't perfect, I failed. There's no such thing as 'good enough'.\"", 
+    "I couldn't identify a recognizable thought from your input.":
+    "Try a different thought"
 };
 
 export {

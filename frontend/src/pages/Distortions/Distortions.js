@@ -7,37 +7,32 @@ import { capitalizeWords } from "../../assets/utils";
 import { backendURL, frontendURL } from "../../assets/constants";
 import axios from "axios";
 
-const mockFetchDistortions = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(["all-or-nothing thinking", "overgeneralizing", "mind reading"]);
-    }, 2000); 
-  });
-};
-
-const Distortion = ({ selections, setSelections, currentPage }) => {
+const Distortion = ({ selections, setSelections, currentPage, thought, situation }) => {
   const [distortions, setDistortions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedDistortions, setSelectedDistortions] = useState([]);
-  const isMock = true;
-  // const thought = selections[0];
-  // const situation = selections[2];
+  console.log("ULR:", `${backendURL}/distortions/`);
 
   useEffect(() => {
-    if (isMock) {
-      mockFetchDistortions().then((data) => {
-        console.log(data);
-        setDistortions(data);
-        setLoading(false);
-      });
-    } else { 
-      axios.get(`${backendURL}/distortions`).then((response) => {
-        console.log(response.data);
-        setDistortions(response.data);
-        setLoading(false);
-      });
-    }
+    axios.post(`${backendURL}/distortions/`, {
+      curr_situation: selections[0], // Assuming `situation` holds the current situation
+      curr_thought: selections[2], // Assuming `thought` holds the current thought
+    })
+    .then((response) => {
+      console.log(response.data);
+      setDistortions(response.data.distortions); // Adjust according to the response structure
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error("Error fetching distortions:", error);
+    });
   }, []);
+
+  // useEffect(() => {
+  //   const updatedSelections = [...selections];
+  //   updatedSelections[currentPage] = selectedDistortions;
+  //   setSelections(updatedSelections);
+  // }, [selectedDistortions, currentPage, setSelections, selections]);
 
   const handleCardClick = (distortion) => {
     setSelectedDistortions((prevSelected) => {
