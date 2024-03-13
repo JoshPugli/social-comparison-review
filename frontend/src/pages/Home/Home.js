@@ -10,10 +10,10 @@ import Reframe from "../Reframe/Reframe";
 import Situation from "../Situation/Situation";
 import Emotion from "../Emotion/Emotion";
 import Survey from "../Survey/Survey";
-import { stages } from "../../assets/variables";
+import { stages } from "../../assets/constants";
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(3); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
   const components = [
     // Platform,
@@ -101,6 +101,7 @@ const Home = () => {
         onForward={handleForward}
         canContinue={canContinue() && currentPage < stages.length - 1}
         canGoBack={currentPage > 0}
+        currentPage={currentPage}
       />
     </div>
   );

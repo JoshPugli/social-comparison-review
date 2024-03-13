@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Usage.module.scss";
-import { platforms, usageOptions, useStyles } from "../../assets/variables"; // Assuming useStyles is not needed here
+import { platforms, usageOptions, useStyles } from "../../assets/constants"; // Assuming useStyles is not needed here
 import TextBox from "../../components/TextBox/TextBox";
 import TextField from "@material-ui/core/TextField";
 

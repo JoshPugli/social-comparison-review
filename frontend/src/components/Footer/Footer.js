@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Footer.module.scss";
 import { Icon } from "@iconify/react";
 
-const Footer = ({ onBack, onForward, canContinue, canGoBack }) => {
+const Footer = ({ onBack, onForward, canContinue, canGoBack, currentPage }) => {
   return (
     <div className={styles.footer}>
       <button

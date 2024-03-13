@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Situation.module.scss";
-import { platforms, thoughts, useStyles } from "../../assets/variables";
+import { platforms, thoughts, useStyles } from "../../assets/constants";
 import TextBox from "../../components/TextBox/TextBox";
 import TextField from "@material-ui/core/TextField";
 
@@ -10,7 +10,7 @@ const Situation = ({ selections, setSelections, currentPage, app }) => {
   // let color = platforms.find((platform) => platform.name === app).colorClass;
 
   const handleInputValueChange = (newValue) => {
-    setInputValue(newValue); 
+    setInputValue(newValue);
     const updatedSelections = [...selections];
     updatedSelections[currentPage] = newValue;
     setSelections(updatedSelections);
@@ -23,20 +23,19 @@ const Situation = ({ selections, setSelections, currentPage, app }) => {
   return (
     <div className={styles.container}>
       <h1>
-        What's a recent situation when using{" "}
-         that led to this negative
-        thought?
+        What's a recent situation when using that led to this negative thought?
       </h1>
       <div className={styles.subheader}>
-      For example, if your negative thought is "No one cares about me," the situation might be "My friend never texted me back."
+        For example, if your negative thought is "No one cares about me," the
+        situation might be "My friend never texted me back."
       </div>
       <TextField
         id="standard-textarea"
         label="Explain the situation here..."
         multiline
-        variant="outlined" 
+        variant="outlined"
         fullWidth
-        value={typeof inputValue === "string" ? inputValue : ""} 
+        value={typeof inputValue === "string" ? inputValue : ""}
         onChange={handleTextFieldChange}
       />
     </div>

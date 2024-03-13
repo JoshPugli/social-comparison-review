@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Thought.module.scss";
-import { platforms, thoughts, useStyles } from "../../assets/variables";
+import { platforms, thoughts, useStyles } from "../../assets/constants";
 import TextBox from "../../components/TextBox/TextBox";
 import TextField from "@material-ui/core/TextField";
 
