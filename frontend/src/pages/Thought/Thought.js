@@ -50,18 +50,6 @@ const Thought = ({ selections, setSelections, currentPage }) => {
           />
         ))}
       </div>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
-      <p>hi</p>
     </div>
   );
 };

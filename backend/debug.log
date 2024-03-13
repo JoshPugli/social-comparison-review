@@ -1,178 +1,51 @@
-Internal Server Error: /distortions/
-Traceback (most recent call last):
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
-    yield
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 233, in handle_request
-    resp = self._pool.handle_request(req)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection_pool.py", line 216, in handle_request
-    raise exc from None
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection_pool.py", line 196, in handle_request
-    response = connection.handle_request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 99, in handle_request
-    raise exc
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 76, in handle_request
-    stream = self._connect(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 122, in _connect
-    stream = self._network_backend.connect_tcp(**kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_backends/sync.py", line 213, in connect_tcp
-    sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/contextlib.py", line 137, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
-    raise to_exc(exc) from exc
-httpcore.ConnectError: [Errno -2] Name or service not known
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 918, in _request
-    response = self._client.send(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 914, in send
-    response = self._send_handling_auth(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 942, in _send_handling_auth
-    response = self._send_handling_redirects(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
-    response = self._send_single_request(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 1015, in _send_single_request
-    response = transport.handle_request(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 233, in handle_request
-    resp = self._pool.handle_request(req)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/contextlib.py", line 137, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
-    raise mapped_exc(message) from exc
-httpx.ConnectError: [Errno -2] Name or service not known
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/core/handlers/exception.py", line 56, in inner
-    response = get_response(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/views/generic/base.py", line 103, in view
-    return self.dispatch(request, *args, **kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-  File "/home/joshpuglielli/Desktop/social-comparison/social-comparison-review/backend/app/views.py", line 18, in post
-    distortions = generate_distortions(curr_situation, curr_thought)
-  File "/home/joshpuglielli/Desktop/social-comparison/social-comparison-review/backend/app/utils.py", line 35, in generate_distortions
-    completion = client.chat.completions.create(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_utils/_utils.py", line 275, in wrapper
-    return func(*args, **kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/resources/chat/completions.py", line 663, in create
-    return self._post(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 1200, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 889, in request
-    return self._request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 942, in _request
-    return self._retry_request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 1013, in _retry_request
-    return self._request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 942, in _request
-    return self._retry_request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 1013, in _retry_request
-    return self._request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 952, in _request
-    raise APIConnectionError(request=request) from err
-openai.APIConnectionError: Connection error.
-"POST /distortions/ HTTP/1.1" 500 249187
-Internal Server Error: /distortions/
-Traceback (most recent call last):
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
-    yield
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 233, in handle_request
-    resp = self._pool.handle_request(req)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection_pool.py", line 216, in handle_request
-    raise exc from None
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection_pool.py", line 196, in handle_request
-    response = connection.handle_request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 99, in handle_request
-    raise exc
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 76, in handle_request
-    stream = self._connect(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 122, in _connect
-    stream = self._network_backend.connect_tcp(**kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_backends/sync.py", line 213, in connect_tcp
-    sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/contextlib.py", line 137, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
-    raise to_exc(exc) from exc
-httpcore.ConnectError: [Errno -2] Name or service not known
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 918, in _request
-    response = self._client.send(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 914, in send
-    response = self._send_handling_auth(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 942, in _send_handling_auth
-    response = self._send_handling_redirects(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
-    response = self._send_single_request(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_client.py", line 1015, in _send_single_request
-    response = transport.handle_request(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 233, in handle_request
-    resp = self._pool.handle_request(req)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/contextlib.py", line 137, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
-    raise mapped_exc(message) from exc
-httpx.ConnectError: [Errno -2] Name or service not known
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/core/handlers/exception.py", line 56, in inner
-    response = get_response(request)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/views/generic/base.py", line 103, in view
-    return self.dispatch(request, *args, **kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/rest_framework/views.py", line 506, in dispatch
-    response = handler(request, *args, **kwargs)
-  File "/home/joshpuglielli/Desktop/social-comparison/social-comparison-review/backend/app/views.py", line 18, in post
-    distortions = generate_distortions(curr_situation, curr_thought)
-  File "/home/joshpuglielli/Desktop/social-comparison/social-comparison-review/backend/app/utils.py", line 35, in generate_distortions
-    completion = client.chat.completions.create(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_utils/_utils.py", line 275, in wrapper
-    return func(*args, **kwargs)
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/resources/chat/completions.py", line 663, in create
-    return self._post(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 1200, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 889, in request
-    return self._request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 942, in _request
-    return self._retry_request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 1013, in _retry_request
-    return self._request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 942, in _request
-    return self._retry_request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 1013, in _retry_request
-    return self._request(
-  File "/home/joshpuglielli/anaconda3/lib/python3.9/site-packages/openai/_base_client.py", line 952, in _request
-    raise APIConnectionError(request=request) from err
-openai.APIConnectionError: Connection error.
-"POST /distortions/ HTTP/1.1" 500 249186
-"POST /distortions/ HTTP/1.1" 200 18
-"POST /distortions/ HTTP/1.1" 200 18
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 58
+File /home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/contrib/messages/storage/session.py first seen with mtime 1677616943.6954458
+File /home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/contrib/messages/storage/cookie.py first seen with mtime 1677616943.6954458
+File /home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/contrib/messages/storage/fallback.py first seen with mtime 1677616943.6954458
+File /home/joshpuglielli/anaconda3/lib/python3.9/site-packages/django/contrib/sessions/serializers.py first seen with mtime 1677616943.7274456
+"POST /distortions/ HTTP/1.1" 200 44
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 152
+"POST /distortions/ HTTP/1.1" 200 70
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 54
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 58
+"POST /distortions/ HTTP/1.1" 200 73
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 58
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 47
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 28
+"POST /distortions/ HTTP/1.1" 200 125
+"POST /distortions/ HTTP/1.1" 200 58
+"POST /distortions/ HTTP/1.1" 200 44
+"POST /distortions/ HTTP/1.1" 200 44
+"POST /distortions/ HTTP/1.1" 200 44
+Bad Request: /distortions/
+Bad Request: /distortions/
+"POST /distortions/ HTTP/1.1" 400 97
+"POST /distortions/ HTTP/1.1" 400 97
+Bad Request: /distortions/
+"POST /distortions/ HTTP/1.1" 400 97
+Bad Request: /distortions/
+Bad Request: /distortions/
+"POST /distortions/ HTTP/1.1" 400 97
+"POST /distortions/ HTTP/1.1" 400 97
+Bad Request: /distortions/
+"POST /distortions/ HTTP/1.1" 400 97
+Bad Request: /distortions/
+"POST /distortions/ HTTP/1.1" 400 97
+Bad Request: /distortions/
+"POST /distortions/ HTTP/1.1" 400 97
+"POST /distortions/ HTTP/1.1" 200 24
+"POST /distortions/ HTTP/1.1" 200 46

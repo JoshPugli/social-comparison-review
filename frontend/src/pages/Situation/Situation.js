@@ -23,7 +23,7 @@ const Situation = ({ selections, setSelections, currentPage }) => {
   return (
     <div className={styles.container}>
       <h1>
-        What's a recent situation when using that led to this negative thought?
+        What's a recent situation when using that led to you thinking that "<span>{selections[0]}</span>"?
       </h1>
       <div className={styles.subheader}>
         For example, if your negative thought is "No one cares about me," the

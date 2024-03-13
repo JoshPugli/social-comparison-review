@@ -6,6 +6,7 @@ import { distortions, distortionDescriptions } from "../../assets/constants";
 import { capitalizeWords } from "../../assets/utils";
 import { backendURL, frontendURL } from "../../assets/constants";
 import axios from "axios";
+import { Icon } from "@iconify/react";
 
 const Distortion = ({
   selections,
@@ -20,18 +21,19 @@ const Distortion = ({
   console.log("ULR:", `${backendURL}/distortions/`);
 
   // useEffect(() => {
-  //   axios.post(`${backendURL}/distortions/`, {
-  //     curr_situation: situation,
-  //     curr_thought: thought,
-  //   })
-  //   .then((response) => {
-  //     console.log(response.data);
-  //     setDistortions(response.data.distortions);
-  //     setLoading(false);
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error fetching distortions:", error);
-  //   });
+  //   axios
+  //     .post(`${backendURL}/distortions/`, {
+  //       curr_situation: situation,
+  //       curr_thought: thought,
+  //     })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setDistortions(response.data.distortions);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching distortions:", error);
+  //     });
   // }, []);
 
   useEffect(() => {
@@ -61,7 +63,8 @@ const Distortion = ({
           Select the thinking trap(s) that you most relate to.
           <br />{" "}
           <span className={styles.highlight}>
-            <span className="font-bold">Note</span>: You may select more than one thinking traps (up to three)
+            <span className="font-bold">Note</span>: You may select more than
+            one thinking traps (up to three)
           </span>
         </div>
         {!loading && distortions.length > 0 && (
@@ -84,6 +87,14 @@ const Distortion = ({
                 onClick={() => handleCardClick(distortion)}
               />
             ))}
+      </div>
+      <div className={styles.headingContainer}>
+        {/* {!loading && distortions.length > 0 && ( */}
+        <div className={styles.showMore}>
+          <Icon icon="iconamoon:sign-plus-bold" className={styles.pmIcon} />
+          Show more thinking traps
+        </div>
+        {/* )} */}
       </div>
     </div>
   );
