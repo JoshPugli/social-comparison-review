@@ -8,6 +8,10 @@ import { backendURL, frontendURL } from "../../assets/constants";
 import axios from "axios";
 import { Icon } from "@iconify/react";
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 const Distortion = ({
   selections,
   setSelections,
@@ -19,7 +23,7 @@ const Distortion = ({
   const [loading, setLoading] = useState(true);
   const [selectedDistortions, setSelectedDistortions] = useState([]);
   const [showAll, setShowAll] = useState(false);
-  console.log("ULR:", `${backendURL}/distortions/`);
+  const doMockCall = true; // TODO: set to true to use a mock call
 
   const remainingDistortions = distortions.filter(
     (distortion) =>
@@ -29,19 +33,30 @@ const Distortion = ({
   );
 
   useEffect(() => {
-    axios
-      .post(`${backendURL}/distortions/`, {
-        curr_situation: situation,
-        curr_thought: thought,
-      })
-      .then((response) => {
-        console.log(response.data);
-        setDistortions(response.data.distortions);
+    if (doMockCall) {
+      sleep(1000).then(() => {
+        setDistortions([
+          "catastrophising",
+          "overgeneralization",
+          "mind-reading",
+        ]);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching distortions:", error);
       });
+    } else {
+      axios
+        .post(`${backendURL}/distortions/`, {
+          curr_situation: situation,
+          curr_thought: thought,
+        })
+        .then((response) => {
+          console.log(response.data);
+          setDistortions(response.data.distortions);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching distortions:", error);
+        });
+    }
   }, []);
 
   useEffect(() => {
@@ -75,9 +90,18 @@ const Distortion = ({
             one thinking traps (up to three)
           </span>
         </div>
-          <div className={styles.descriptiveText}>
-            Thinking traps we think you might be falling for:
+        {!loading && doMockCall && (
+          <div className="text-red-500 text-2xl font-bold">
+            NOTE: This is a mocked call. To generate real data, set
+            doMockCall=false in Distortions.js
           </div>
+        )}
+        {loading ||
+          (generatedDistortions.length > 0 && (
+            <div className={styles.descriptiveText}>
+              Thinking traps we think you might be falling for:
+            </div>
+          ))}
         {!loading && generatedDistortions.length === 0 && (
           <div className={styles.descriptiveText}>
             We could not find thinking traps associated with your thought <br />{" "}
@@ -101,7 +125,7 @@ const Distortion = ({
             ))}
       </div>
       <div className={styles.headingContainer}>
-        {!loading && distortions.length > 0 && (
+        {!loading && (
           <div className={styles.showMore} onClick={() => setShowAll(!showAll)}>
             {!showAll ? (
               <>
