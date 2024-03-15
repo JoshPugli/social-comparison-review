@@ -1,20 +1,31 @@
 import React, { useState, useRef } from "react";
-import "./Reframe.module.scss";
+import styles from "./Reframe.module.scss";
 import axios from "axios";
+import LoadingSkeleton from "../../components/DistortionCard/LoadingSkeleton";
 
-const Platform = () => {
-  const [advice, setAdvice] = useState("");
-
-  const getAdvice = async () => {
-    const response = await axios.get("https://localhost:8000/information");
-    setAdvice(response.data.slip.advice);
-  }
+const Reframe = () => {
+  const [reframes, setReframes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   return (
-    <div style={{ fontSize: "30px", marginTop: "30vh" }}>
-      WOW! You have just recieved some great advice on how to reframe your thoughts about social media!
+    <div className={styles.container}>
+      <div className={styles.headingContainer}>
+        <h1>Reframe Your Thinking</h1>
+        <div className={styles.subHeader}>
+          Here are a few reframes you may consider. Click on the reframe you
+          find most relatable and helpful to start working on it or add your own
+          reframe.
+        </div>
+        {loading && <div className={styles.highlight}> <span className="font-bold">Note</span>: Reframing suggestions may take up to 30 seconds to load </div>}
+      </div>
+      <div className={styles.reframes}>
+        {loading &&
+          Array(3) // Assuming you want to display 3 loading cards
+            .fill()
+            .map((_, index) => <LoadingSkeleton key={index} />)}
+      </div>
     </div>
   );
 };
 
-export default Platform;
+export default Reframe;

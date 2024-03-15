@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Distortions.module.scss";
 import DistortionCard from "../../components/DistortionCard/DistortionCard";
-import DistortionLoadingCard from "../../components/DistortionCard/DistortionLoadingCard";
+import LoadingSkeleton from "../../components/DistortionCard/LoadingSkeleton";
 import { distortions, distortionDescriptions } from "../../assets/constants";
 import { capitalizeWords } from "../../assets/utils";
 import { backendURL, frontendURL } from "../../assets/constants";
@@ -35,11 +35,7 @@ const Distortion = ({
   useEffect(() => {
     if (doMockCall) {
       sleep(1000).then(() => {
-        setDistortions([
-          "catastrophizing",
-          "personalizing",
-          "mind reading",
-        ]);
+        setDistortions(["catastrophizing", "personalizing", "mind reading"]);
         setLoading(false);
       });
     } else {
@@ -96,7 +92,7 @@ const Distortion = ({
             doMockCall=false in Distortions.js
           </div>
         )}
-        {loading ||
+        {loading === true ||
           (generatedDistortions.length > 0 && (
             <div className={styles.descriptiveText}>
               Thinking traps we think you might be falling for:
@@ -113,7 +109,7 @@ const Distortion = ({
         {loading
           ? Array(3) // Assuming you want to display 3 loading cards
               .fill()
-              .map((_, index) => <DistortionLoadingCard key={index} />)
+              .map((_, index) => <LoadingSkeleton key={index} />)
           : generatedDistortions.map((distortion, index) => (
               <DistortionCard
                 key={index}

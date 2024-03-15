@@ -1,0 +1,42 @@
+@import "../../assets/colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+}
+
+.container h1 {
+  font-size: 40px;
+  color: $header-grey;
+  margin-bottom: 1rem;
+}
+
+.reframes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.subHeader {
+  font-size: 1.2em;
+  color: $subheader-grey;
+}
+
+.descriptiveText {
+  margin-top: 2rem;
+  font-size: 1.5em;
+  color: $secondary;
+}
+
+.highlight {
+  background-color: lightgoldenrodyellow;
+  padding: 3px 2px;
+}
+
+.headingContainer {
+  align-items: flex-start;
+  align-self: flex-start;
+}
