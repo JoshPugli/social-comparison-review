@@ -36,9 +36,9 @@ const Distortion = ({
     if (doMockCall) {
       sleep(1000).then(() => {
         setDistortions([
-          "catastrophising",
-          "overgeneralization",
-          "mind-reading",
+          "catastrophizing",
+          "personalizing",
+          "mind reading",
         ]);
         setLoading(false);
       });
