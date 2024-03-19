@@ -110,8 +110,8 @@
 
 @media (max-width: 1100px) {
   .groupContainer {
-    overflow: scroll;
-    height: 300px;
+    
+    height: auto;
   }
 
   .groupContainer::-webkit-scrollbar {
