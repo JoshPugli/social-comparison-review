@@ -26,19 +26,19 @@ DISTORTIONS = [
 if os.environ.get("ENVIRONMENT") != "production":
     dotenv.load_dotenv()
 
-client = OpenAI()
+try:
+    client = OpenAI()
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    OpenAI.api_key = OPENAI_API_KEY
+except Exception as e:
+    client = None
 
 def generate_distortions(situation, thought, distortion_model="ft:gpt-3.5-turbo-0125:personal::923pIUVO", distortions=DISTORTIONS):
     """ """
     start_time = time.time()
     
-    # Check if the OPENAI_API_KEY is set
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    if not OPENAI_API_KEY:
-        # If the API key is not set, make sure the view is aware
-        return "OPENAI_API_KEY not set."
-
-    OpenAI.api_key = OPENAI_API_KEY
+    if not OPENAI_API_KEY or not client:
+        return "OPENAI_API_KEY or client not set."
     
     completion = client.chat.completions.create(
         model=distortion_model,
