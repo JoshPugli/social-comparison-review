@@ -34,7 +34,7 @@ class GetDistortionsView(APIView):
 
 class GetReframeView(APIView):
     def post(self, request, *args, **kwargs):
-        serializer = SituationThoughtSerializer(data=request.data)
+        serializer = SituationThoughtDistortionSerializer(data=request.data)
         if serializer.is_valid():
             curr_situation = serializer.validated_data["curr_situation"]
             curr_thought = serializer.validated_data["curr_thought"]
@@ -47,4 +47,5 @@ class GetReframeView(APIView):
                 status=status.HTTP_200_OK,
             )
         else:
+            print("Serializer errors:", serializer.errors)  # Debugging line
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
