@@ -29,18 +29,18 @@ DISTORTIONS = [
     "all-or-nothing thinking",
 ]
 
-path = os.path.join(CURRENT_FILE, "distortion_format.jsonl")
+# path = os.path.join(CURRENT_FILE, "distortion_format.jsonl")
 
-file = client.files.create(
-  file=open(path, "rb"),
-  purpose="fine-tune"
-)
+# file = client.files.create(
+#   file=open(path, "rb"),
+#   purpose="fine-tune"
+# )
 
-client.fine_tuning.jobs.create(
-  training_file=file.id, 
-  model="gpt-3.5-turbo",
-  hyperparameters={
-    "n_epochs": 15,
-	"batch_size": 3,
-  }
-)
+# client.fine_tuning.jobs.create(
+#   training_file=file.id, 
+#   model="gpt-3.5-turbo",
+#   hyperparameters={
+#     "n_epochs": 15,
+# 	"batch_size": 3,
+#   }
+# )

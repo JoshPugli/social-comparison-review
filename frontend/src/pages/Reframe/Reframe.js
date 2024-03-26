@@ -16,7 +16,13 @@ const Reframe = () => {
           find most relatable and helpful to start working on it or add your own
           reframe.
         </div>
-        {loading && <div className={styles.highlight}> <span className="font-bold">Note</span>: Reframing suggestions may take up to 30 seconds to load </div>}
+        {loading && (
+          <div className={styles.highlight}>
+            {" "}
+            <span className="font-bold">Note</span>: Reframing suggestions may
+            take up to 30 seconds to load{" "}
+          </div>
+        )}
       </div>
       <div className={styles.reframes}>
         {loading &&
