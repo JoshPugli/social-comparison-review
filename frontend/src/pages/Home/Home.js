@@ -13,7 +13,7 @@ import Survey from "../Survey/Survey";
 import { stages } from "../../assets/constants";
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(4); // Change this to 0 to start from the beginning
+  const [currentPage, setCurrentPage] = useState(0); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
   const components = [
     Thought,
@@ -21,7 +21,7 @@ const Home = () => {
     Situation,
     Distortion,
     Reframe,
-    Survey,
+    // Survey,
   ];
   const componentProps = {
     Thought: {
@@ -48,10 +48,16 @@ const Home = () => {
     },
     Reframe: {
       /* Props for Reframe */
+      selections,
+      setSelections,
+      currentPage,
+      thought: selections[0],
+      situation: selections[2],
+      distortions: selections[3],
     },
-    Survey: {
-      /* Props for Survey */
-    },
+    // Survey: {
+    //   /* Props for Survey */
+    // },
   };
 
   useEffect(() => {

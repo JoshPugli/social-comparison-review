@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./DistortionCard.module.scss";
+import styles from "./Card.module.scss";
 import { Icon } from "@iconify/react";
 
 const DistortionLoadingCard = ({}) => {

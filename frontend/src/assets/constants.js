@@ -78,7 +78,7 @@ const stages = [
   "Situation",
   "Distortion",
   "Reframe",
-  "Survey",
+  // "Survey",
 ];
 
 const useStyles = makeStyles({
@@ -127,6 +127,7 @@ const distortions = [
   "mind reading",
   "overgeneralizing",
   "all-or-nothing thinking",
+  // "mental filter",
 ];
 
 const distortionDescriptions = {
@@ -154,6 +155,7 @@ const distortionDescriptions = {
     'Assuming you know what someone else is thinking. "She didn\'t say hello. She must be mad at me."',
   overgeneralizing:
     'Jumping to conclusions based on one experience. "They didn\'t text me back. Nobody ever texts me back."',
+  // "mental filter": "Focusing exclusively on the negative aspects of a situation and filtering out all the positive ones. For example, thinking, 'I messed up that one answer' in an otherwise successful presentation and ignoring all the positive feedback.",
   "all-or-nothing thinking":
     "Thinking in extremes. \"If it isn't perfect, I failed. There's no such thing as 'good enough'.\"", 
     "I couldn't identify a recognizable thought from your input.":

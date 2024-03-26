@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Distortions.module.scss";
-import DistortionCard from "../../components/DistortionCard/DistortionCard";
-import LoadingSkeleton from "../../components/DistortionCard/LoadingSkeleton";
+import Card from "../../components/Card/Card";
+import LoadingSkeleton from "../../components/Card/LoadingSkeleton";
 import { distortions, distortionDescriptions } from "../../assets/constants";
 import { capitalizeWords } from "../../assets/utils";
 import { backendURL, frontendURL } from "../../assets/constants";
@@ -23,7 +23,7 @@ const Distortion = ({
   const [loading, setLoading] = useState(true);
   const [selectedDistortions, setSelectedDistortions] = useState([]);
   const [showAll, setShowAll] = useState(false);
-  const doMockCall = true; // TODO: set to true to use a mock call
+  const doMockCall = false; // TODO: set to true to use a mock call
 
   const remainingDistortions = distortions.filter(
     (distortion) =>
@@ -111,11 +111,11 @@ const Distortion = ({
               .fill()
               .map((_, index) => <LoadingSkeleton key={index} />)
           : generatedDistortions.map((distortion, index) => (
-              <DistortionCard
+              <Card
                 key={index}
-                distortion={capitalizeWords(distortion)}
+                title={capitalizeWords(distortion)}
                 selected={selectedDistortions.includes(distortion)}
-                distortionDescription={distortionDescriptions[distortion]}
+                description={distortionDescriptions[distortion]}
                 onClick={() => handleCardClick(distortion)}
               />
             ))}
@@ -147,7 +147,7 @@ const Distortion = ({
       <div className={styles.distortions}>
         {showAll &&
           remainingDistortions.map((distortion, index) => (
-            <DistortionCard
+            <Card
               key={index}
               distortion={capitalizeWords(distortion)}
               selected={selectedDistortions.includes(distortion)}

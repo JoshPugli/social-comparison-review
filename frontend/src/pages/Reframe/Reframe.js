@@ -1,11 +1,44 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Reframe.module.scss";
 import axios from "axios";
-import LoadingSkeleton from "../../components/DistortionCard/LoadingSkeleton";
+import LoadingSkeleton from "../../components/Card/LoadingSkeleton";
+import { backendURL, frontendURL } from "../../assets/constants";
+import Card from "../../components/Card/Card";
 
-const Reframe = () => {
-  const [reframes, setReframes] = useState([]);
+const Reframe = ({
+  selections,
+  setSelections,
+  currentPage,
+  thought,
+  situation,
+  distortions,
+}) => {
+  const [reframes, setReframes] = useState({});
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    axios
+      .post(`${backendURL}/reframes/`, {
+        curr_situation: situation,
+        curr_thought: thought,
+        distortions: distortions,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setReframes(response.data.reframes);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching reframes:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const updatedSelections = [...selections];
+    updatedSelections[currentPage] = selected;
+    setSelections(updatedSelections);
+  }, [selected]);
 
   return (
     <div className={styles.container}>
@@ -25,10 +58,20 @@ const Reframe = () => {
         )}
       </div>
       <div className={styles.reframes}>
-        {loading &&
-          Array(3) // Assuming you want to display 3 loading cards
-            .fill()
-            .map((_, index) => <LoadingSkeleton key={index} />)}
+        {loading
+          ? Array(4)
+              .fill()
+              .map((_, index) => <LoadingSkeleton key={index} />)
+          : Object.values(reframes).map((reframe, index) => (
+              <Card
+                key={index}
+                title={""}
+                description={reframe}
+                selected={index === selected}
+                onClick={() => setSelected(index)} // Corrected this line
+                isReframe={true}
+              />
+            ))}
       </div>
     </div>
   );
