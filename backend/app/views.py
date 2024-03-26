@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.core.cache import cache
-from sentence_transformers import SentenceTransformer
 from django.http import JsonResponse
 from rest_framework import status
 from .utils import generate_distortions  # Import your utility function

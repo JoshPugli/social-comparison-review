@@ -1,33 +1,33 @@
-from openai import OpenAI
-import dotenv
-import os
-import openai
-import json
+# from openai import OpenAI
+# import dotenv
+# import os
+# import openai
+# import json
 
-CURRENT_FILE = os.path.abspath(os.path.dirname(__file__))
+# CURRENT_FILE = os.path.abspath(os.path.dirname(__file__))
 
-if os.environ.get("ENVIRONMENT") != "production":
-    dotenv.load_dotenv()
+# if os.environ.get("ENVIRONMENT") != "production":
+#     dotenv.load_dotenv()
 
-client = OpenAI()
-OpenAI.api_key = os.getenv("OPENAI_API_KEY")
+# client = OpenAI()
+# OpenAI.api_key = os.getenv("OPENAI_API_KEY")
 
-DISTORTIONS = [
-    "disqualifying the positive",
-    "comparing and despairing",
-    "personalizing",
-    "should statements",
-    "emotional reasoning",
-    "catastrophizing",
-    "labeling",
-    "fortune telling",
-    "blaming",
-    "magnification",
-    "negative feeling or emotion",
-    "mind reading",
-    "overgeneralizing",
-    "all-or-nothing thinking",
-]
+# DISTORTIONS = [
+#     "disqualifying the positive",
+#     "comparing and despairing",
+#     "personalizing",
+#     "should statements",
+#     "emotional reasoning",
+#     "catastrophizing",
+#     "labeling",
+#     "fortune telling",
+#     "blaming",
+#     "magnification",
+#     "negative feeling or emotion",
+#     "mind reading",
+#     "overgeneralizing",
+#     "all-or-nothing thinking",
+# ]
 
 # path = os.path.join(CURRENT_FILE, "distortion_format.jsonl")
 
