@@ -20,7 +20,7 @@ const Footer = ({ onBack, onForward, canContinue, canGoBack, currentPage }) => {
         onClick={onForward}
         disabled={!canContinue}
       >
-        Continue
+        {currentPage === 4 ? "Finish" : "Continue"}
         <span className={`${styles.icon} ${styles.forwardIcon}`}>
           <Icon icon="ph:arrow-right-bold" />
         </span>

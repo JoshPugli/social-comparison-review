@@ -32,7 +32,7 @@ const Reframe = ({
       .catch((error) => {
         console.error("Error fetching reframes:", error);
       });
-  }, []);
+  }, [thought, situation, distortions]);
 
   useEffect(() => {
     const updatedSelections = [...selections];
@@ -65,11 +65,10 @@ const Reframe = ({
           : Object.values(reframes).map((reframe, index) => (
               <Card
                 key={index}
-                title={""}
+                title={`Reframe ${index + 1}`}
                 description={reframe}
                 selected={index === selected}
                 onClick={() => setSelected(index)} // Corrected this line
-                isReframe={true}
               />
             ))}
       </div>

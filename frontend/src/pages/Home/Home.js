@@ -2,27 +2,19 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Home.scss";
 import HeaderBar from "../../components/HeaderBar/HeaderBar";
 import Footer from "../../components/Footer/Footer";
-// import Platform from "../Platform/Platform";
-// import Usage from "../Usage/Usage";
 import Thought from "../Thought/Thought";
 import Distortion from "../Distortions/Distortions";
 import Reframe from "../Reframe/Reframe";
 import Situation from "../Situation/Situation";
 import Emotion from "../Emotion/Emotion";
-import Survey from "../Survey/Survey";
 import { stages } from "../../assets/constants";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(0); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
-  const components = [
-    Thought,
-    Emotion,
-    Situation,
-    Distortion,
-    Reframe,
-    // Survey,
-  ];
+  const navigate = useNavigate();
+  const components = [Thought, Emotion, Situation, Distortion, Reframe];
   const componentProps = {
     Thought: {
       selections,
@@ -47,7 +39,6 @@ const Home = () => {
       situation: selections[2],
     },
     Reframe: {
-      /* Props for Reframe */
       selections,
       setSelections,
       currentPage,
@@ -55,9 +46,6 @@ const Home = () => {
       situation: selections[2],
       distortions: selections[3],
     },
-    // Survey: {
-    //   /* Props for Survey */
-    // },
   };
 
   useEffect(() => {
@@ -66,10 +54,7 @@ const Home = () => {
   }, [currentPage, selections]);
 
   const canContinue = () => {
-    // Check if the current page is Emotion and all necessary inputs have values
     if (stages[currentPage] === "Emotion") {
-      // Assuming selections for Emotion are stored as an object at the currentPage index
-      // And contains keys like beliefRating, emotion, and emotionIntensity
       const emotionSelections = selections[currentPage];
       return (
         emotionSelections &&
@@ -78,7 +63,6 @@ const Home = () => {
         emotionSelections.emotionIntensity
       );
     } else {
-      // For other pages, just check if there is a selection
       return selections[currentPage] !== null && selections[currentPage] != "";
     }
   };
@@ -91,7 +75,11 @@ const Home = () => {
   };
 
   const handleForward = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, stages.length - 1));
+    if (currentPage === stages.length - 1) {
+      navigate("/end");
+    } else {
+      setCurrentPage((prev) => Math.min(prev + 1, stages.length - 1));
+    }
   };
 
   return (
@@ -103,7 +91,7 @@ const Home = () => {
       <Footer
         onBack={handleBack}
         onForward={handleForward}
-        canContinue={canContinue() && currentPage < stages.length - 1}
+        canContinue={canContinue()}
         canGoBack={currentPage > 0}
         currentPage={currentPage}
       />

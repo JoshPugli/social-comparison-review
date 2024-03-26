@@ -23,7 +23,7 @@ const Distortion = ({
   const [loading, setLoading] = useState(true);
   const [selectedDistortions, setSelectedDistortions] = useState([]);
   const [showAll, setShowAll] = useState(false);
-  const doMockCall = false; // TODO: set to true to use a mock call
+  const doMockCall = false; 
 
   const remainingDistortions = distortions.filter(
     (distortion) =>
@@ -38,7 +38,8 @@ const Distortion = ({
         setDistortions(["catastrophizing", "personalizing", "mind reading"]);
         setLoading(false);
       });
-    } else {
+    } else if (situation && thought) { 
+      setLoading(true);
       axios
         .post(`${backendURL}/distortions/`, {
           curr_situation: situation,
@@ -51,9 +52,10 @@ const Distortion = ({
         })
         .catch((error) => {
           console.error("Error fetching distortions:", error);
+          setLoading(false); 
         });
     }
-  }, []);
+  }, [situation, thought]); 
 
   useEffect(() => {
     const updatedSelections = [...selections];
