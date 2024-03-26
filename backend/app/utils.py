@@ -34,7 +34,6 @@ except Exception as e:
     client = None
 
 def generate_distortions(situation, thought, distortion_model="ft:gpt-3.5-turbo-0125:personal::923pIUVO", distortions=DISTORTIONS):
-    """ """
     start_time = time.time()
     
     if not OPENAI_API_KEY or not client:
