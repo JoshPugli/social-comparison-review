@@ -18,20 +18,22 @@ const Reframe = ({
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    axios
-      .post(`${backendURL}/reframes/`, {
-        curr_situation: situation,
-        curr_thought: thought,
-        distortions: distortions,
-      })
-      .then((response) => {
-        console.log(response.data);
-        setReframes(response.data.reframes);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching reframes:", error);
-      });
+    if (loading && Object.keys(reframes).length === 0) {
+      axios
+        .post(`${backendURL}/reframes/`, {
+          curr_situation: situation,
+          curr_thought: thought,
+          distortions: distortions,
+        })
+        .then((response) => {
+          console.log(response.data);
+          setReframes(response.data.reframes);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching reframes:", error);
+        });
+    }
   }, [thought, situation, distortions]);
 
   useEffect(() => {

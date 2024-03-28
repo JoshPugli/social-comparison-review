@@ -23,7 +23,7 @@ const Distortion = ({
   const [loading, setLoading] = useState(true);
   const [selectedDistortions, setSelectedDistortions] = useState([]);
   const [showAll, setShowAll] = useState(false);
-  const doMockCall = false; 
+  const doMockCall = false;
 
   const remainingDistortions = distortions.filter(
     (distortion) =>
@@ -38,7 +38,7 @@ const Distortion = ({
         setDistortions(["catastrophizing", "personalizing", "mind reading"]);
         setLoading(false);
       });
-    } else if (situation && thought) { 
+    } else if (situation && thought && (loading || generatedDistortions.length === 0)) {
       setLoading(true);
       axios
         .post(`${backendURL}/distortions/`, {
@@ -52,10 +52,10 @@ const Distortion = ({
         })
         .catch((error) => {
           console.error("Error fetching distortions:", error);
-          setLoading(false); 
+          setLoading(false);
         });
     }
-  }, [situation, thought]); 
+  }, [situation, thought]);
 
   useEffect(() => {
     const updatedSelections = [...selections];
@@ -151,9 +151,9 @@ const Distortion = ({
           remainingDistortions.map((distortion, index) => (
             <Card
               key={index}
-              distortion={capitalizeWords(distortion)}
+              title={capitalizeWords(distortion)}
               selected={selectedDistortions.includes(distortion)}
-              distortionDescription={distortionDescriptions[distortion]}
+              description={distortionDescriptions[distortion]}
               onClick={() => handleCardClick(distortion)}
             />
           ))}
