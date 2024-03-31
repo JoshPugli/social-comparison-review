@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./Distortions.module.scss";
 import Card from "../../components/Card/Card";
 import LoadingSkeleton from "../../components/Card/LoadingSkeleton";
@@ -24,6 +24,7 @@ const Distortion = ({
   const [selectedDistortions, setSelectedDistortions] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const doMockCall = false;
+  const called = useRef(false);
 
   const remainingDistortions = distortions.filter(
     (distortion) =>
@@ -38,17 +39,17 @@ const Distortion = ({
         setDistortions(["catastrophizing", "personalizing", "mind reading"]);
         setLoading(false);
       });
-    } else if (situation && thought && (loading || generatedDistortions.length === 0)) {
-      setLoading(true);
+    } else if (situation && thought && !called.current) {
+      called.current = true;
       axios
         .post(`${backendURL}/distortions/`, {
           curr_situation: situation,
           curr_thought: thought,
         })
         .then((response) => {
-          console.log(response.data);
-          setDistortions(response.data.distortions);
           setLoading(false);
+          console.log("Recieved distortion data from backend:", response.data);
+          setDistortions(response.data.distortions);
         })
         .catch((error) => {
           console.error("Error fetching distortions:", error);

@@ -70,38 +70,41 @@ def generate_reframes(
     situation: str,
     thought: str,
     distortions: list,
-    reframe_model="ft:gpt-3.5-turbo-0125:personal::975vA6NT",
+    # reframe_model="ft:gpt-3.5-turbo-0125:personal::975vA6NT",
+    reframe_model="ft:gpt-3.5-turbo-0125:personal::98cmp431",
 ):
     start_time = time.time()
 
     if not OPENAI_API_KEY or not client:
         return "OPENAI_API_KEY or client not set."
 
+    distortion_str = ",".join(distortions)
     completion = client.chat.completions.create(
         model=reframe_model,
         messages=[
             {
                 "role": "system",
-                "content": "Given a distorted thought, the situation the user is in, and a list of 1-3 thinking traps that the user resonates with, generate four specific types of reframes: 'Thinking Trap Challenge Reframe', 'Direct Challenge Reframe', 'Self-Compassion Reframe', and 'Contextual Reframe'. Each reframe should address the cognitive distortions differently, providing alternative perspectives and challenging the distorted thinking in unique ways.",
+                "content": "Given a distorted thought, the situation the user is in, and a list of 1-3 thinking traps that the user resonates with, generate 2 unique reframes.",
             },
             {
                 "role": "user",
-                "content": str(
-                    {
-                        "Thought": thought,
-                        "Situation": situation,
-                        "Thinking Traps": distortions,
-                    }
-                ),
+                "content": f"Situation: {situation}.\nThought: {thought}.\nThinking Traps: {distortion_str}.",
             },
         ],
     )
-    try:
-        reframes = ast.literal_eval(completion.choices[0].message.content)
-    except SyntaxError:
-        reframes = {}
+    # try:
+    #     reframes = ast.literal_eval(completion.choices[0].message.content)
+    # except SyntaxError:
+    #     reframes = {}
+    reframes = completion.choices[0].message.content
 
     print("--- generating distortions took %s seconds ---" % (time.time() - start_time))
     print("Reframes: ", reframes)
 
-    return reframes
+    return reframes.split("\n")
+
+
+thought = "I'm a failure."
+situation = "I failed my test."
+distortions = ["labeling", "all-or-nothing thinking"]
+generate_reframes(situation, thought, distortions)

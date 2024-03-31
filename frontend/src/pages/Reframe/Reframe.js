@@ -16,9 +16,11 @@ const Reframe = ({
   const [reframes, setReframes] = useState({});
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
+  const called = useRef(false);
 
   useEffect(() => {
-    if (loading && Object.keys(reframes).length === 0) {
+    if (loading && Object.keys(reframes).length === 0 && !called.current) {
+      called.current = true;
       axios
         .post(`${backendURL}/reframes/`, {
           curr_situation: situation,
