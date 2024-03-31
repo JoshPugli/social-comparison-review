@@ -79,6 +79,7 @@ const stages = [
   "Distortion",
   "Reframe",
   // "Survey",
+  "Finalize",
 ];
 
 const useStyles = makeStyles({

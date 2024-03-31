@@ -3,6 +3,16 @@ import styles from "./Footer.module.scss";
 import { Icon } from "@iconify/react";
 
 const Footer = ({ onBack, onForward, canContinue, canGoBack, currentPage }) => {
+  const next_button_text = (() => {
+    if (currentPage === 4) {
+      return "Finalize";
+    } else if (currentPage === 5) {
+      return "Submit";
+    } else {
+      return "Continue";
+    }
+  })();
+
   return (
     <div className={styles.footer}>
       <button
@@ -20,7 +30,7 @@ const Footer = ({ onBack, onForward, canContinue, canGoBack, currentPage }) => {
         onClick={onForward}
         disabled={!canContinue}
       >
-        {currentPage === 4 ? "Finish" : "Continue"}
+        {next_button_text}
         <span className={`${styles.icon} ${styles.forwardIcon}`}>
           <Icon icon="ph:arrow-right-bold" />
         </span>

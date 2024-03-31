@@ -5,6 +5,7 @@ import LoadingSkeleton from "../../components/Card/LoadingSkeleton";
 import { backendURL, frontendURL } from "../../assets/constants";
 import Card from "../../components/Card/Card";
 import { Icon } from "@iconify/react";
+import CustomReframeCard from "../../components/Card/CustomReframeCard";
 
 const Reframe = ({
   selections,
@@ -18,30 +19,40 @@ const Reframe = ({
   const [selected, setSelected] = useState(null);
   const [fetching, setFetching] = useState(true);
   const called = useRef(false);
+  const mock = true; // TODO Set to false to make real API call
 
   const getReframes = async () => {
     setFetching(true);
-    axios
-      .post(`${backendURL}/reframes/`, {
-        curr_situation: situation,
-        curr_thought: thought,
-        distortions: distortions,
-      })
-      .then((response) => {
-        setFetching(false);
-        setReframes((currentReframes) => [
-          ...currentReframes,
-          ...response.data.reframes,
-        ]);
-      })
-      .catch((error) => {
-        console.error("Error fetching reframes:", error);
-      });
+    if (mock) {
+      const extraReframes = [
+        "You are doing the best you can.",
+        "It's okay to feel this way.",
+        "You are not alone.",
+      ];
+      setReframes((currentReframes) => [...currentReframes, ...extraReframes]);
+      setFetching(false);
+      return;
+    } else {
+      axios
+        .post(`${backendURL}/reframes/`, {
+          curr_situation: situation,
+          curr_thought: thought,
+          distortions: distortions,
+        })
+        .then((response) => {
+          setFetching(false);
+          setReframes((currentReframes) => [
+            ...currentReframes,
+            ...response.data.reframes,
+          ]);
+        })
+        .catch((error) => {
+          console.error("Error fetching reframes:", error);
+        });
+    }
   };
 
   useEffect(() => {
-    console.log("Component mounted or updated");
-    console.log("Called:", called.current);
     if (!called.current) {
       console.log("fetching reframes");
       called.current = true;
@@ -49,14 +60,16 @@ const Reframe = ({
     }
   }, []);
 
-  useEffect(() => {
+  const clickHandler = (reframeText, index) => {
     const updatedSelections = [...selections];
-    updatedSelections[currentPage] = selected;
+    updatedSelections[currentPage] = reframeText;
     setSelections(updatedSelections);
-  }, [selected]);
+    setSelected(index);
+  };
 
   return (
     <div className={styles.container}>
+      {mock && <div className="text-red-600">MOCK CALL</div>}
       <div className={styles.headingContainer}>
         <h1>Reframe Your Thinking</h1>
         <div className={styles.subHeader}>
@@ -73,16 +86,24 @@ const Reframe = ({
         )}
       </div>
       <div className={styles.reframes}>
-        {
-          reframes.map((reframe, index) => (
-            <Card
-              key={index}
-              title={`Reframe ${index + 1}`}
-              description={reframe}
-              selected={index === selected}
-              onClick={() => setSelected(index)} // Corrected this line
+        {reframes.length > 0 && (
+          <>
+            {reframes.map((reframe, index) => (
+              <Card
+                key={index}
+                title={`Reframe ${index + 1}`}
+                description={reframe}
+                selected={index === selected}
+                onClick={() => clickHandler(reframe, index)}
+              />
+            ))}
+            <CustomReframeCard
+              selected={selected === reframes.length}
+              onClick={clickHandler}
+              index={reframes.length}
             />
-          ))}
+          </>
+        )}
         {fetching &&
           Array(2)
             .fill()

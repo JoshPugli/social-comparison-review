@@ -7,14 +7,15 @@ import Distortion from "../Distortions/Distortions";
 import Reframe from "../Reframe/Reframe";
 import Situation from "../Situation/Situation";
 import Emotion from "../Emotion/Emotion";
+import Finalize from "../Finalize/Finalize";
 import { stages } from "../../assets/constants";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(0); // Change this to 0 to start from the beginning
+  const [currentPage, setCurrentPage] = useState(4); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
   const navigate = useNavigate();
-  const components = [Thought, Emotion, Situation, Distortion, Reframe];
+  const components = [Thought, Emotion, Situation, Distortion, Reframe, Finalize];
   const componentProps = {
     Thought: {
       selections,
@@ -45,6 +46,11 @@ const Home = () => {
       thought: selections[0],
       situation: selections[2],
       distortions: selections[3],
+    },
+    Finalize: {
+      selections,
+      setSelections,
+      currentPage,
     },
   };
 
