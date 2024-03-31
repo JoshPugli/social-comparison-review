@@ -86,7 +86,7 @@ const HeaderBar = ({ progress, sections }) => {
       a 15.9155 15.9155 0 0 1 0 -31.831"
             style={{ strokeDasharray: `var(--percentage-done), 100` }}
           />
-          <text x="18" y="19" className={styles.percentageText}>
+          <text x="18" y="19" dy=".30em" className={styles.percentageText}>
             {percentageDone.toFixed(0)}%
           </text>
         </svg>
