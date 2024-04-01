@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   width: 50vw;
+  top: 0;
 }
 
 .container h1 {
@@ -26,93 +27,11 @@
 }
 
 .descriptiveText {
-  margin-top: 2rem;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: $secondary;
 }
 
-.highlight {
-  background-color: lightgoldenrodyellow;
-  padding: 3px 2px;
-}
-
 .headingContainer {
-  align-items: flex-start;
-  align-self: flex-start;
-}
-
-.plus {
-  font-size: 1.2em;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-  color: rgb(70, 70, 70);
-}
-
-.plus:hover {
-  color: #007fa3;
-}
-
-.pmIcon {
-  font-size: 1.5em;
-  margin-left: 0;
-}
-
-.button {
-  margin-left: 5px;
-  font-size: 1.2em;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-.buttonEdit {
-  color: rgb(70, 70, 70);
-}
-
-.buttonEdit:hover {
-  color: #007fa3;
-}
-
-.buttonCancel {
-  color: red;
-}
-
-.buttonCancel:hover {
-  color: darken(red, 10%);
-}
-
-.reframe-textarea {
-  margin-bottom: 0.5vh;
-  font-size: 1.2em;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.editContainer {
-  margin-top: 1vh;
-  margin-bottom: 2.5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.helpContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  font-size: 1.2em;
-  margin-top: 1vh;
+  align-self: center;
 }

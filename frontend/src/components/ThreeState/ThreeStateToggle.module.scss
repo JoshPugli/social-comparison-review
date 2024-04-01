@@ -1,0 +1,42 @@
+@import "../../assets/colors.scss";
+
+.toggleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  user-select: none;
+  width: 100%;
+  position: relative; 
+}
+
+.toggleOption {
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1; /* Ensure the options take equal space */
+  text-align: center; /* Center text in each option */
+  position: relative; /* For z-index stacking context */
+  z-index: 2; /* Ensure options are above the slider */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Add color transition */
+
+}
+
+.optionActive {
+  color: white;
+  transition: color 0.3s ease; /* Ensure the transition applies to active state as well */
+}
+
+/* Slider background to indicate the active option */
+.slider {
+  position: absolute;
+  height: 90%;
+  border-radius: 6px;
+  background-color: $primary;
+  transition: left 0.3s ease, width 0.3s ease; /* Smooth transitions for sliding and resizing */
+  z-index: 1; /* Below the options */
+}
