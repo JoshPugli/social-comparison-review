@@ -5,7 +5,7 @@ import NextSteps from "./RightOptions/NextSteps";
 import Validation from "./RightOptions/Validation";
 import Tailor from "./RightOptions/Tailor";
 import EditReframeCard from "../../../components/Card/EditReframeCard";
-
+import LoadingSkeleton from "../../../components/Card/LoadingSkeleton";
 
 const Right = ({
   setScrollValue,
@@ -20,6 +20,8 @@ const Right = ({
   const [subIndex, setSubIndex] = useState(0);
   const [currElement, setCurrElement] = useState(subPages[subIndex]);
   const [newReframe, setNewReframe] = useState(null);
+  const [loading, setLoading] = useState(true);
+
 
   const handleAssistanceChoice = (index) => {
     setSubIndex(index);
@@ -54,7 +56,7 @@ const Right = ({
         <div className={styles.rightContentContainer}>
           <div className={styles.rightContentUpper}>{currElement}</div>
           <div className={styles.rightContentLower}>
-            {newReframe && (
+            {newReframe && !loading && (
             <EditReframeCard
               reframe={reframe}
               setReframe={setReframe}
@@ -62,6 +64,7 @@ const Right = ({
               setTextAreaValue={setTextAreaValue}
               setActiveIndex={setActiveIndex}
             />)}
+            {loading && <LoadingSkeleton style={{width: "90%"}}/>}
           </div>
         </div>
       </div>
