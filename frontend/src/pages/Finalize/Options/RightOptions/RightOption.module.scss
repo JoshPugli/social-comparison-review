@@ -1,0 +1,49 @@
+@import "../../../../assets/colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+$width: 90%;
+.textArea {
+  color: $header-grey;
+  border: 1px solid #ccc;
+  border-radius: 10px 10px 0 0; /* top-left, top-right, bottom-right, bottom-left */
+  padding: 5px 10px;
+  font-size: 1em;
+  text-align: left;
+  font-size: 1.5em;
+  width: $width;
+}
+
+.textAreaButton {
+  margin-top: 0;
+  background-color: #4892fb;
+  padding: 5px;
+  color: #fff;
+  border-radius: 0 0 8px 8px; /* top-left, top-right, bottom-right, bottom-left */
+  transition: all 0.2s ease-in-out;
+  width: $width;
+}
+
+.textAreaButton:hover {
+  background-color: #3b7ac9;
+}
+
+.button {
+  width: $width;
+  margin-top: 0;
+  background-color: #4892fb;
+  border-radius: 8px;
+  padding: 5px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #3b7ac9;
+}

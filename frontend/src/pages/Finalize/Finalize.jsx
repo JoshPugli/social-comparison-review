@@ -11,7 +11,7 @@ const Finalize = ({ selections, setSelections, currentPage }) => {
   const [activeIndex, setActiveIndex] = useState(1);
   const optionText = [
     "Edit Your Reframe",
-    "Finish Reframing and Continue",
+    "Finish Reframing and Submit",
     "Get Additional AI Assistance",
   ];
   const optionPages = [Left, Middle, Right];

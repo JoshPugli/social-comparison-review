@@ -104,7 +104,32 @@ def generate_reframes(
     return reframes.split("\n")
 
 
-thought = "I'm a failure."
-situation = "I failed my test."
-distortions = ["labeling", "all-or-nothing thinking"]
-generate_reframes(situation, thought, distortions)
+def update_reframe(
+    situation: str,
+    thought: str,
+    distortions: list,
+    current_reframe: str,
+    user_request,
+    reframe_model="gpt-3.5-turbo-0125",
+):
+    distortion_str = ", ".join(distortions)
+    
+    prompt_messages = [
+        {
+            "role": "system",
+            "content": f"Assist in refining a cognitive reframe. Current situation: '{situation}'. Original thought: '{thought}'. Identified distortions: {distortion_str}. Current reframe: '{current_reframe}'. Aim to improve the reframe based on the user's feedback."
+        },
+        {
+            "role": "user",
+            "content": user_request
+        },
+    ]
+    
+    completion = client.chat.completions.create(
+        model=reframe_model,
+        messages=prompt_messages,
+    )
+    
+    new_reframe = completion.choices[0].message.content
+    return new_reframe
+

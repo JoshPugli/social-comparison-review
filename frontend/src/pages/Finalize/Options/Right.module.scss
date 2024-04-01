@@ -1,0 +1,74 @@
+@import "../../../assets/colors.scss";
+
+.assistanceContainer {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 50vh;
+  transform: translateY(-10%);
+  width: 100%;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid $subheader-grey;
+  margin-bottom: 1vh;
+}
+
+.assistanceText {
+  margin-top: 1vh;
+  color: $subheader-grey;
+  font-size: 1.5em;
+  margin-bottom: 1vh;
+}
+
+.focus {
+  color: $secondary;
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25%;
+  height: 100%;
+}
+
+.rightContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  height: 100%;
+}
+
+.rightContentUpper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.rightContentLower {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
