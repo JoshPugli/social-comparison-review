@@ -2,13 +2,13 @@ import { React } from "react";
 import styles from "./Options.module.scss";
 
 const Right = ({
-    isEditable,
-    setIsEditable,
+    setScrollValue,
     selections,
     reframe,
     setReframe,
     textAreaValue,
     setTextAreaValue,
+    setActiveIndex,
   }) => {
   return (
     <div className={styles.container}>

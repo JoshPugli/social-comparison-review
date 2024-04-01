@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styles from './ThreeStateToggle.module.scss';
+import React, { useState, useEffect, useRef } from "react";
+import styles from "./ThreeStateToggle.module.scss";
 
-const ThreeStateToggle = ({ options, onActiveIndexChange }) => {
-  const [activeIndex, setActiveIndex] = useState(1);
+const ThreeStateToggle = ({ options, canScroll, activeIndex, setActiveIndex, onActiveIndexChange }) => {
   const toggleRef = useRef(null);
   const [sliderStyle, setSliderStyle] = useState({});
 
@@ -14,6 +13,9 @@ const ThreeStateToggle = ({ options, onActiveIndexChange }) => {
   }, [activeIndex, options.length]);
 
   const handleOptionClick = (index) => {
+    if (!canScroll) {
+      return;
+    }
     setActiveIndex(index);
     if (onActiveIndexChange) {
       onActiveIndexChange(index);
@@ -21,12 +23,14 @@ const ThreeStateToggle = ({ options, onActiveIndexChange }) => {
   };
 
   return (
-    <div className={styles.toggleContainer} ref={toggleRef}>
+    <div className={`${styles.toggleContainer} ${canScroll ? '' : styles.disabled}`} ref={toggleRef}>
       <div className={styles.slider} style={sliderStyle}></div>
       {options.map((option, index) => (
         <div
           key={option}
-          className={`${styles.toggleOption} ${index === activeIndex ? styles.optionActive : ''}`}
+          className={`${styles.toggleOption} ${
+            index === activeIndex ? styles.optionActive : ""
+          }`}
           onClick={() => handleOptionClick(index)}
         >
           {option}

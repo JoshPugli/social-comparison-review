@@ -6,7 +6,6 @@ import Left from "./Options/Left";
 import Right from "./Options/Right";
 
 const Finalize = ({ selections, setSelections, currentPage }) => {
-  const [isEditable, setIsEditable] = useState(false);
   const [reframe, setReframe] = useState(selections[currentPage - 1]);
   const [textAreaValue, setTextAreaValue] = useState(reframe);
   const [activeIndex, setActiveIndex] = useState(1);
@@ -16,6 +15,7 @@ const Finalize = ({ selections, setSelections, currentPage }) => {
     "Get Additional AI Assistance",
   ];
   const optionPages = [Left, Middle, Right];
+  const [canScroll, setCanScroll] = useState(true);
 
   useEffect(() => {
     if (activeIndex !== 1) {
@@ -33,6 +33,10 @@ const Finalize = ({ selections, setSelections, currentPage }) => {
     setActiveIndex(index);
   };
 
+  const setScrollValue = (value) => {
+    setCanScroll(value);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.headingContainer}>
@@ -40,16 +44,19 @@ const Finalize = ({ selections, setSelections, currentPage }) => {
       </div>
       <ThreeStateToggle
         options={optionText}
+        canScroll={canScroll}
+        activeIndex={activeIndex}
+        setActiveIndex={setActiveIndex}
         onActiveIndexChange={handleActiveIndexChange}
       />
       {React.createElement(optionPages[activeIndex], {
-        isEditable,
-        setIsEditable,
+        setScrollValue,
         selections,
         reframe,
         setReframe,
         textAreaValue,
         setTextAreaValue,
+        setActiveIndex,
       })}
     </div>
   );

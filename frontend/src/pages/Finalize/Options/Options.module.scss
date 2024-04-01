@@ -9,16 +9,79 @@
   text-align: center;
   height: 50vh;
   transform: translateY(-10%);
+  width: 100%;
 }
 
 .middleTextLine1 {
-    color: $header-grey;
-    font-size: 1.7em;
-    margin-bottom: 2.5vh;
+  color: $header-grey;
+  font-size: 1.7em;
+  margin-bottom: 2.5vh;
 }
 
 .middleTextLine2 {
-    color: $subheader-grey;
-    font-size: 1.5em;
+  color: $subheader-grey;
+  font-size: 1.5em;
 }
 
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  text-align: left;
+}
+
+.editText {
+  font-size: 1.7em;
+  color: $secondary;
+}
+
+.textArea {
+  color: $header-grey;
+  border: 1px solid #ccc;
+  border-radius: 10px 10px 0 0; /* top-left, top-right, bottom-right, bottom-left */
+  padding: 5px 10px;
+  font-size: 1em;
+  text-align: left;
+  font-size: 1.5em;
+}
+
+.editButton {
+  width: 100%;
+  margin-top: 0;
+  background-color: #4892fb;
+  padding: 5px;
+  color: #fff;
+  border-radius: 0 0 8px 8px; /* top-left, top-right, bottom-right, bottom-left */
+  transition: all 0.2s ease-in-out;
+}
+
+.editButton.selected {
+  width: 50%;
+  border-radius: 0 0 0 8px; /* top-left, top-right, bottom-right, bottom-left */
+}
+
+.cancelButton {
+  width: 0%;
+  border-radius: 0 0 0 8px; /* top-left, top-right, bottom-right, bottom-left */
+  padding: 5px;
+  background-color: red;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  opacity: 0; /* Initially hidden */
+  cursor: default;
+}
+
+.cancelButton.selected {
+  opacity: 1; /* Fully visible */
+  width: 50%;
+  border-radius: 0 0 8px 0; /* top-left, top-right, bottom-right, bottom-left */
+  cursor: pointer;
+}
+
+.editButton:hover {
+  background-color: darken(#4892fb, 10%);
+}
+
+.cancelButton:hover {
+  background-color: darken(red, 10%);
+}

@@ -12,6 +12,7 @@
   user-select: none;
   width: 100%;
   position: relative; 
+  transition: all 0.3s ease-in-out; /* Add transition for smooth animation */
 }
 
 .toggleOption {
@@ -23,12 +24,16 @@
   position: relative; /* For z-index stacking context */
   z-index: 2; /* Ensure options are above the slider */
   transition: color 0.3s ease, background-color 0.3s ease; /* Add color transition */
-
 }
 
 .optionActive {
   color: white;
   transition: color 0.3s ease; /* Ensure the transition applies to active state as well */
+}
+
+.disabled, .disabled * {
+  cursor: not-allowed !important;
+  opacity: 0.5;
 }
 
 /* Slider background to indicate the active option */
