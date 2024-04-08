@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./EditReframingCard.module.scss";
 import { Icon } from "@iconify/react";
 
-const Card = ({ title, description, selected, onClick, isReframe = false }) => {
+const Card = ({ title, description, selected, onClick }) => {
   return (
     <div
       className={`${styles["distortion-card-container"]} ${
@@ -21,11 +21,9 @@ const Card = ({ title, description, selected, onClick, isReframe = false }) => {
         )}
       </div>
       <div className={styles["content-container"]}>
-        {!isReframe && (
-          <div className={styles["distortion-name"]}>
-            <p>{title}</p>
-          </div>
-        )}
+        <div className={styles["distortion-name"]}>
+          <p>{title}</p>
+        </div>
         <div className={styles["distortion-description"]}>
           <p>{description}</p>
         </div>

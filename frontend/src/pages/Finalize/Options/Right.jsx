@@ -6,6 +6,8 @@ import Validation from "./RightOptions/Validation";
 import Tailor from "./RightOptions/Tailor";
 import EditReframeCard from "../../../components/Card/EditReframeCard";
 import LoadingSkeleton from "../../../components/Card/LoadingSkeleton";
+import axios from "axios"; // Import axios like this
+import { backendURL } from "../../../assets/constants";
 
 const Right = ({
   setScrollValue,
@@ -18,18 +20,38 @@ const Right = ({
 }) => {
   const subPages = [Tailor, NextSteps, Validation];
   const [subIndex, setSubIndex] = useState(0);
-  const [currElement, setCurrElement] = useState(subPages[subIndex]);
-  const [newReframe, setNewReframe] = useState(null);
-  const [loading, setLoading] = useState(true);
-
+  const CurrentSubPage = subPages[subIndex];
+  const [newReframe, setNewReframe] = useState([null, null, null]);
+  const [loading, setLoading] = useState(false);
+  // TODO Remove hardcoded values
+  selections[0] = "I am not good enough";
+  selections[1] = "I failed a test I studied hard for";
+  selections[2] = ["All-or-Nothing Thinking"];
+  reframe =
+    "It is not the end of the world. I can learn from this experience and do better next time.";
 
   const handleAssistanceChoice = (index) => {
     setSubIndex(index);
   };
 
-  useEffect(() => {
-    setCurrElement(subPages[subIndex]);
-  }, [subIndex]);
+  const getNewReframe = async (prompt) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(`${backendURL}/update-reframe/`, {
+        curr_situation: selections[1],
+        curr_thought: selections[0],
+        distortions: selections[2],
+        current_reframe: reframe,
+        user_request: prompt,
+      });
+      const updatedReframes = [...newReframe];
+      updatedReframes[subIndex] = response.data.new_reframe;
+      setNewReframe(updatedReframes);
+    } catch (error) {
+      console.error("Error fetching reframes:", error);
+    }
+    setLoading(false);
+  };
 
   return (
     <div className={styles.assistanceContainer}>
@@ -54,17 +76,20 @@ const Right = ({
           />
         </div>
         <div className={styles.rightContentContainer}>
-          <div className={styles.rightContentUpper}>{currElement}</div>
+          <div className={styles.rightContentUpper}>
+            <CurrentSubPage getNewReframe={getNewReframe} />
+          </div>
           <div className={styles.rightContentLower}>
-            {newReframe && !loading && (
-            <EditReframeCard
-              reframe={reframe}
-              setReframe={setReframe}
-              textAreaValue={textAreaValue}
-              setTextAreaValue={setTextAreaValue}
-              setActiveIndex={setActiveIndex}
-            />)}
-            {loading && <LoadingSkeleton style={{width: "90%"}}/>}
+            {newReframe[subIndex] && !loading && (
+              <EditReframeCard
+                title={"Updated Reframe"}
+                description={newReframe[subIndex]}
+                selected={textAreaValue}
+                onClick={setTextAreaValue}
+                setActiveIndex={setActiveIndex}
+              />
+            )}
+            {loading && <LoadingSkeleton style={{ width: "90%" }} />}
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ import { stages } from "../../assets/constants";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(4); // Change this to 0 to start from the beginning
+  const [currentPage, setCurrentPage] = useState(5); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
   const navigate = useNavigate();
   const components = [Thought, Emotion, Situation, Distortion, Reframe, Finalize];

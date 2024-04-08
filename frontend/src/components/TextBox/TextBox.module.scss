@@ -22,14 +22,14 @@
 }
 
 .textBox:hover {
-  background-color: $secondary;  
+  background-color: $primary;  
   color: white;  
-  border: 1px solid $secondary;
+  border: 1px solid $primary;
 }
 
 .selected {
-  background-color: $secondary;
-  border: 1px solid $secondary;  
+  background-color: $primary;
+  border: 1px solid $primary;  
   color: white;
   transition: background-color 0.3s, transform 0.3s;
 }

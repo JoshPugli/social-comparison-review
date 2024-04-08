@@ -19,7 +19,7 @@ const Reframe = ({
   const [selected, setSelected] = useState(null);
   const [fetching, setFetching] = useState(true);
   const called = useRef(false);
-  const mock = true; // TODO Set to false to make real API call
+  const mock = false; // TODO Set to false to make real API call
 
   const getReframes = async () => {
     setFetching(true);

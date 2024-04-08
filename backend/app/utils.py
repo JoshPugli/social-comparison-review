@@ -117,11 +117,11 @@ def update_reframe(
     prompt_messages = [
         {
             "role": "system",
-            "content": f"Assist in refining a cognitive reframe. Current situation: '{situation}'. Original thought: '{thought}'. Identified distortions: {distortion_str}. Current reframe: '{current_reframe}'. Aim to improve the reframe based on the user's feedback."
+            "content": f"Assist in refining a cognitive reframe. Current situation: '{situation}'. Original thought: '{thought}'. Identified distortions: {distortion_str}. Current reframe: '{current_reframe}'. Aim to improve the reframe based on the user's feedback. I want just the reframe."
         },
         {
             "role": "user",
-            "content": user_request
+            "content": f"{user_request}. Be concise, and put it from the perspective of me (I, me, my)."
         },
     ]
     

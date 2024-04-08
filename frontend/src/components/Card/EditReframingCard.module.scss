@@ -19,7 +19,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 90%;
+    width: 100%;
     margin-top: 1rem;
     border-radius: 10px;
     border: 1px solid #ccc;
@@ -49,6 +49,8 @@
     font-size: 1em;
     color: rgb(90, 90, 90);
     margin-bottom: 0.5rem;
+    text-align: left;
+    margin-right: 0.5rem;
   }
   
   .content-container {
