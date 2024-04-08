@@ -16,6 +16,7 @@ const Finalize = ({ selections, setSelections, currentPage }) => {
   ];
   const optionPages = [Left, Middle, Right];
   const [canScroll, setCanScroll] = useState(true);
+  selections[4] = "It is going to be okay!";
 
   useEffect(() => {
     if (activeIndex !== 1) {

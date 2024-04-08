@@ -8,8 +8,8 @@ const Vertical = ({ options, onActiveIndexChange }) => {
 
   useEffect(() => {
     const optionHeight = toggleRef.current.offsetHeight / options.length;
-    const sliderHeight = optionHeight - 40; // Adjust padding or margins as needed
-    const topPosition = activeIndex * optionHeight + 20; // Adjust according to your layout
+    const sliderHeight = optionHeight - 20; // Adjust padding or margins as needed
+    const topPosition = activeIndex * optionHeight + 10; // Adjust according to your layout
     setSliderStyle({ height: `${sliderHeight}px`, top: `${topPosition}px` });
   }, [activeIndex, options.length]);
 

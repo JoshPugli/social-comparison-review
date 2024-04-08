@@ -9,7 +9,7 @@ import { usePCWidth, useHeaderWidth, useIconWidth } from "../../utils/widths";
 
 // note: PC Width is default to 1100px
 
-const HeaderBar = ({ progress, sections }) => {
+const HeaderBar = ({ progress, sections, isFinal }) => {
   const sectionsRefs = useRef(sections.map(() => React.createRef()));
   const logoRef = useRef();
 
@@ -22,26 +22,26 @@ const HeaderBar = ({ progress, sections }) => {
   const [percentageDone, setPercentageDone] = useState(0);
 
   useEffect(() => {
-    const root = document.documentElement; // Reference to the root element
+    const root = document.documentElement;
     root.style.setProperty("--percentage-done", `${percentageDone}, 100`);
   }, [percentageDone]);
 
-  // changed progress bar to depend on screen width
+  useEffect(() => {
+    if (isFinal) {
+      setPercentageDone(100);
+    }
+  }, [isFinal]);
+
   useEffect(() => {
     const calculateProgressBarPosition = () => {
-      setPercentageDone(((progress) / sections.length) * 100);
-
-      // if using pc
+      setPercentageDone((progress / sections.length) * 100);
       if (screenWidth > pcWidth) {
         const elts = document.getElementsByClassName(styles.section);
         const rects = Array.from(elts).map((elt) =>
           elt.getBoundingClientRect()
         );
         setProgressBarX(rects[progress].x + rects[progress].width);
-      }
-
-      // if using mobile
-      else {
+      } else {
         setProgressBarX(0);
       }
     };
@@ -50,21 +50,13 @@ const HeaderBar = ({ progress, sections }) => {
       window.removeEventListener("load", calculateProgressBarPosition);
   }, [progress, sections, screenWidth, pcWidth]);
 
-  // changed progress bar to depend on screen width
   useEffect(() => {
-    // compute the percentage done
     setPercentageDone((progress / sections.length) * 100);
-
-    // if using pc
     if (screenWidth > pcWidth) {
-      // align to each section
       const elts = document.getElementsByClassName(styles.section);
       const rects = Array.from(elts).map((elt) => elt.getBoundingClientRect());
       setProgressBarX(rects[progress].x + rects[progress].width);
-    }
-
-    // if using mobile
-    else {
+    } else {
       setProgressBarX(0);
     }
   }, [progress, sections, screenWidth, pcWidth]);
@@ -96,55 +88,59 @@ const HeaderBar = ({ progress, sections }) => {
         <img src={UofT} alt="University of Toronto logo" />
       </div>
 
-      <div className={styles.sections}>
-        {
-          // check screen width
-          screenWidth > 1100
-            ? sections.map((section, index) => (
-                <div
-                  key={index}
-                  ref={sectionsRefs.current[index]}
-                  className={`${styles.section} ${
-                    index <= progress ? styles.active : styles.inactive
-                  }`}
-                >
-                  {String(index + 1).padStart(2, "0")}. {section}
-                </div>
-              ))
-            : sections.map((section, index) => (
-                <div
-                  key={index}
-                  ref={sectionsRefs.current[index]}
-                  className={`${styles.section} ${
-                    index === progress ? styles.active : styles.inactive
-                  }`}
-                >
-                  {String(index + 1).padStart(2, "0")}. {section}
-                </div>
-              ))
-        }
-        {/* <div className={`${styles.section} ${styles.percentage}`}>
-          {percentageDone.toFixed(0)}%
-        </div> */}
+      <div className={`${styles.sections} ${isFinal ? styles.fadeOut : ""}`}>
+        {screenWidth > 1100
+          ? sections.map((section, index) => (
+              <div
+                key={index}
+                ref={sectionsRefs.current[index]}
+                className={`${styles.section} ${
+                  index <= progress ? styles.active : styles.inactive
+                }`}
+              >
+                {String(index + 1).padStart(2, "0")}. {section}
+              </div>
+            ))
+          : sections.map((section, index) => (
+              <div
+                key={index}
+                ref={sectionsRefs.current[index]}
+                className={`${styles.section} ${
+                  index === progress ? styles.active : styles.inactive
+                }`}
+              >
+                {String(index + 1).padStart(2, "0")}. {section}
+              </div>
+            ))}
       </div>
+
+        <div
+          className={styles.thankYouText + " " + (isFinal ? styles.fadeIn : "")}
+        >
+          Thanks for participating 👋
+        </div>
 
       {
         <div className={`${styles.progressBarContainer}`}>
           <div
             className={styles.activeBar}
-            style={
-              screenWidth > pcWidth
-                ? { width: `calc(${progressBarX}px)` }
-                : { width: `calc(${progressBarX}px)` }
-            }
+            style={{
+              width: isFinal
+                ? "100%"
+                : screenWidth > pcWidth
+                ? `calc(${progressBarX}px)`
+                : `calc(${progressBarX}px)`,
+            }}
           />
           <div
             className={styles.inactiveBar}
-            style={
-              screenWidth > pcWidth
-                ? { width: `calc(100% - ${progressBarX}px)` }
-                : { width: `calc(100% - ${progressBarX}px)` }
-            }
+            style={{
+              width: isFinal
+                ? "0%"
+                : screenWidth > pcWidth
+                ? `calc(100% - ${progressBarX}px)`
+                : `calc(100% - ${progressBarX}px)`,
+            }}
           />
         </div>
       }

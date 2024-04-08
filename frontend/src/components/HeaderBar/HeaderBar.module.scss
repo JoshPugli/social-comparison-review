@@ -14,6 +14,31 @@
   padding: 0px 10px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   max-width: 100vw;
+  
+  .fadeOut {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .thankYouText {
+    opacity: 0; // Start hidden
+    transition: opacity 0.3s ease-in 0.3s; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    text-align: center;
+    color: $secondary;
+    // Make sure it's above other elements
+    z-index: 1010; 
+  }
+
+  .fadeIn {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+    transition-delay: 0.3s; 
+  }
 
   .sections {
     display: flex;

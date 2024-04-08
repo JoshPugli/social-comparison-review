@@ -10,12 +10,14 @@ import Emotion from "../Emotion/Emotion";
 import Finalize from "../Finalize/Finalize";
 import { stages } from "../../assets/constants";
 import { useNavigate } from "react-router-dom";
+import End from "../End/End";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(5); // Change this to 0 to start from the beginning
   const [selections, setSelections] = useState(Array(stages.length).fill(null));
+  const [isFinal, setIsFinal] = useState(false);
   const navigate = useNavigate();
-  const components = [Thought, Emotion, Situation, Distortion, Reframe, Finalize];
+  const components = [Thought, Emotion, Situation, Distortion, Reframe, Finalize, End];
   const componentProps = {
     Thought: {
       selections,
@@ -52,6 +54,9 @@ const Home = () => {
       setSelections,
       currentPage,
     },
+    End: {
+      selections,
+    },
   };
 
   useEffect(() => {
@@ -73,8 +78,8 @@ const Home = () => {
     }
   };
 
-  const CurrentComponent = components[currentPage];
-  const props = componentProps[stages[currentPage]];
+  const CurrentComponent = isFinal ? End : components[currentPage];
+  const props = isFinal ? componentProps['End'] : componentProps[stages[currentPage]];
 
   const handleBack = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 0));
@@ -82,7 +87,8 @@ const Home = () => {
 
   const handleForward = () => {
     if (currentPage === stages.length - 1) {
-      navigate("/end");
+      setIsFinal(true);
+      // navigate("/end", { state: { selections } });
     } else {
       setCurrentPage((prev) => Math.min(prev + 1, stages.length - 1));
     }
@@ -90,17 +96,17 @@ const Home = () => {
 
   return (
     <div className="page-container">
-      <HeaderBar progress={currentPage} sections={stages} />
+      <HeaderBar progress={currentPage} sections={stages} isFinal={isFinal}/>
       <div className="home-container">
         {React.createElement(CurrentComponent, props)}
       </div>
-      <Footer
+      {!isFinal &&<Footer
         onBack={handleBack}
         onForward={handleForward}
         canContinue={canContinue()}
         canGoBack={currentPage > 0}
         currentPage={currentPage}
-      />
+      /> }
     </div>
   );
 };

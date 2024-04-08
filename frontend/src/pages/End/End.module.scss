@@ -1,16 +1,92 @@
-.container {
+@import "../../assets/colors.scss";
+
+.outer {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  width: 100%;
 }
 
-.content {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transform: translateY(25%);
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr; // Header row and content row
+  width: auto;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box; // Include border in the element's total width and height
 }
 
 .header {
-  font-size: 4rem;
+  font-size: 2rem;
+  color: $header-grey;
+  width: 100%;
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px 10px 0 0;
+}
+
+
+.colored {
+  color: $secondary;
+}
+
+.content {
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+  padding: 10px; // Apply padding here, which affects only content and not header
+}
+
+.selections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1.5em;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.selection {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.downloadButton {
+  background-color: #4892fb;
+  padding: 5px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 0 0 10px 10px;
+  font-size: 1.2em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.downloadButton:hover {
+  background-color: darken($color: #4892fb, $amount: 10%);
+}
+
+.tryAgain {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+  font-size: 1.5em;
+  color: $header-grey;
+  transition: color 0.2s ease-in-out;
+}
+
+.tryAgain:hover {
+  color: $secondary;
 }
