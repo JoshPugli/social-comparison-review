@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import styles from "./Thought.module.scss";
-import { platforms, thoughts, useStyles } from "../../assets/constants";
+import { thoughts } from "../../assets/constants";
 import TextBox from "../../components/TextBox/TextBox";
 import TextField from "@material-ui/core/TextField";
 
 const Thought = ({ selections, setSelections, currentPage }) => {
-  // Combine the thought and selectedThought states into one to synchronize their values
   const [inputValue, setInputValue] = useState(selections[currentPage] || "");
-  // let color = platforms.find((platform) => platform.name === app).colorClass;
 
   const handleInputValueChange = (newValue) => {
-    setInputValue(newValue); // Update the combined state
-    // Update the selections state for the current page
+    setInputValue(newValue); 
     const updatedSelections = [...selections];
     updatedSelections[currentPage] = newValue;
     setSelections(updatedSelections);
@@ -32,9 +29,9 @@ const Thought = ({ selections, setSelections, currentPage }) => {
         id="standard-textarea"
         label="Type your thought here..."
         multiline
-        variant="outlined" // Changed to 'outlined' for better visibility
+        variant="outlined" 
         fullWidth
-        value={typeof inputValue === "string" ? inputValue : ""} // TextField expects a string, ensure compatibility
+        value={typeof inputValue === "string" ? inputValue : ""} 
         onChange={handleTextFieldChange}
       />
       <div className={styles.commonLabel}>

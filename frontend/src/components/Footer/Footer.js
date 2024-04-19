@@ -4,9 +4,9 @@ import { Icon } from "@iconify/react";
 
 const Footer = ({ onBack, onForward, canContinue, canGoBack, currentPage }) => {
   const next_button_text = (() => {
-    if (currentPage === 4) {
+    if (currentPage === 5) {
       return "Finalize";
-    } else if (currentPage === 5) {
+    } else if (currentPage === 6) {
       return "Submit";
     } else {
       return "Continue";

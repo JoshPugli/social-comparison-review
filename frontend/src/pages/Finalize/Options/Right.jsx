@@ -23,12 +23,6 @@ const Right = ({
   const CurrentSubPage = subPages[subIndex];
   const [newReframe, setNewReframe] = useState([null, null, null]);
   const [loading, setLoading] = useState(false);
-  // TODO Remove hardcoded values
-  selections[0] = "I am not good enough";
-  selections[1] = "I failed a test I studied hard for";
-  selections[2] = ["All-or-Nothing Thinking"];
-  reframe =
-    "It is not the end of the world. I can learn from this experience and do better next time.";
 
   const handleAssistanceChoice = (index) => {
     setSubIndex(index);
@@ -38,9 +32,9 @@ const Right = ({
     setLoading(true);
     try {
       const response = await axios.post(`${backendURL}/update-reframe/`, {
-        curr_situation: selections[1],
-        curr_thought: selections[0],
-        distortions: selections[2],
+        curr_situation: selections[3],
+        curr_thought: selections[1],
+        distortions: selections[4],
         current_reframe: reframe,
         user_request: prompt,
       });

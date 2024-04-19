@@ -10,6 +10,7 @@ import Emotion from "../Emotion/Emotion";
 import Finalize from "../Finalize/Finalize";
 import { stages } from "../../assets/constants";
 import End from "../End/End";
+import ID from "../ID/ID";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -33,6 +34,7 @@ const Home = () => {
     sessionStorage.setItem("isFinal", JSON.stringify(isFinal));
   }, [currentPage, selections, isFinal]);
   const components = [
+    ID,
     Thought,
     Emotion,
     Situation,
@@ -42,6 +44,11 @@ const Home = () => {
     End,
   ];
   const componentProps = {
+    ID: {
+      selections,
+      setSelections,
+      currentPage,
+    },
     Thought: {
       selections,
       setSelections,
@@ -61,16 +68,16 @@ const Home = () => {
       selections,
       setSelections,
       currentPage,
-      thought: selections[0],
-      situation: selections[2],
+      thought: selections[1],
+      situation: selections[3],
     },
     Reframe: {
       selections,
       setSelections,
       currentPage,
-      thought: selections[0],
-      situation: selections[2],
-      distortions: selections[3],
+      thought: selections[1],
+      situation: selections[3],
+      distortions: selections[4],
     },
     Finalize: {
       selections,

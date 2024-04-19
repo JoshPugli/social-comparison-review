@@ -33,25 +33,25 @@ const End = ({selections}) => {
           <div className={styles.selections}>
             <div className={styles.selection}>
               <span className={styles.colored}>Negative thought I had:</span>{" "}
-              {selections[0]}
+              {selections[1]}
             </div>
             <div className={styles.selection}>
               <span className={styles.colored}>Emotion I felt:</span>{" "}
-              {selections[1].emotion}
+              {selections[2].emotion}
             </div>
             <div className={styles.selection}>
               <span className={styles.colored}>Situation I was in:</span>{" "}
-              {selections[2]}
+              {selections[3]}
             </div>
             <div className={styles.selection}>
               <span className={styles.colored}>
                 Thinking trap(s) I identified:
               </span>{" "}
-              {selections[3].join(", ")}
+              {selections[4].join(", ")}
             </div>
             <div className={styles.selection}>
               <span className={styles.colored}>Reframe I came up with:</span>{" "}
-              {selections[5]}
+              {selections[6]}
             </div>
           </div>
         </div>

@@ -57,22 +57,18 @@ const usageOptions = [
 ];
 
 const thoughts = [
+  "No one cares about me",
+  "I'm a failure",
+  "I'll never be able to do anything",
+  "I'm scared something bad will happen to the people I love",
+  "I will go crazy if I don't control my racing thoughts",
+  "I'm worthless",
   "I'm not good enough",
-  "I'm not as good as others",
-  "I'm not worthy",
-  "I'm not capable",
-  "I'm not lovable",
-  "I'm not deserving",
-  "I'm not safe",
-  "I'm not secure",
-  "I'm not in control",
-  "I'm not enough",
-  "I'm not important",
-  "I'm not respected",
-  "I'm not valued",
+  "I'm a burden to others",
 ];
 
 const stages = [
+  "ID",
   "Thought",
   "Emotion",
   "Situation",

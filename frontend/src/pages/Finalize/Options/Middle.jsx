@@ -14,7 +14,7 @@ const Middle = ({
     <div className={styles.container}>
       <div className={styles.middleTextLine1}>
         Based on your initial thought,{" "}
-        <span style={{ color: "#007FA3" }}>"{selections[0]}"</span>, we've
+        <span style={{ color: "#007FA3" }}>"{selections[1]}"</span>, we've
         reframed it to
         <br />
         <span style={{ color: "#007FA3" }}>"{reframe}"</span>
