@@ -80,6 +80,24 @@ const Distortion = ({
   return (
     <div className={styles.container}>
       <div className={styles.headingContainer}>
+        <div className={styles.infoContainer}>
+          <div className={styles.infoHeader}>
+            <Icon icon="icon-park-outline:info" className={styles.infoIcon} />
+            What is a thinking trap?
+          </div>
+          <div className={styles.infoText} style={{marginBottom: "1rem"}}>
+            Our negative thinking often falls into common patterns, called
+            "thinking traps." We can learn to recognize when we're getting stuck
+            in a thinking trap. This gives us more power over our negative
+            thoughts.
+          </div>
+          <div className={styles.infoText}>
+            Common thinking traps include: assuming what others think (“Mind
+            reading”), thinking in extremes (“All-or-nothing thinking”),
+            focusing on the worst-case scenario (“Catastrophizing”), focusing
+            only on the bad (“Disqualifying the positive”), etc.
+          </div>
+        </div>
         <h1>Select the Thinking Trap</h1>
         <div className={styles.subHeader}>
           Select the thinking trap(s) that you most relate to.

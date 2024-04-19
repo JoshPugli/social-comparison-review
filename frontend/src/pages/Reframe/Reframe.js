@@ -71,6 +71,28 @@ const Reframe = ({
     <div className={styles.container}>
       {mock && <div className="text-red-600">MOCK CALL</div>}
       <div className={styles.headingContainer}>
+        <div className={styles.infoContainer}>
+          <div className={styles.infoHeader}>
+            <Icon icon="icon-park-outline:info" className={styles.infoIcon} />
+            What is a Reframing?
+          </div>
+          <div className={styles.infoText} style={{ marginBottom: "1rem" }}>
+            We overcome thinking traps by coming up with new ways to think about
+            the situation we are dealing with. This process is called{" "}
+            <span style={{ color: "#25355A", textDecoration: "bold" }}>
+              reframing
+            </span>
+            .
+          </div>
+          <div className={styles.infoText}>
+            What can you tell yourself to think about this situation in a more
+            <span style={{ color: "#25355A" }}>
+              {" "}
+              positive, realistic, or helpful way
+            </span>
+            ?
+          </div>
+        </div>
         <h1>Reframe Your Thinking</h1>
         <div className={styles.subHeader}>
           Here are a few reframes you may consider. Click on the reframe you
