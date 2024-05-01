@@ -1,13 +1,29 @@
-FROM node:14.17.3
+# Use an official lightweight Node.js image
+FROM node:14.17.3 as build
 
-WORKDIR /frontend
+# Set the working directory
+WORKDIR /app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+# Install dependencies
+RUN npm install
 
+# Copy the rest of your frontend files
 COPY . .
 
-EXPOSE 3000
+# Build the app
+RUN npm run build
 
-CMD ["npm", "start"]
+# Use an official nginx image
+FROM nginx:alpine
+
+# Copy the built app to nginx's serve directory
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
