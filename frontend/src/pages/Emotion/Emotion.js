@@ -37,7 +37,7 @@ const Emotion = ({ selections, setSelections, currentPage }) => {
     <div className={styles.container}>
       <div className={styles.columns}>
         <div className={styles.column}>
-          <h1>On a scale from 1 to 10, how strongly do you believe the thought: <span style={{color: "#007FA3"}}>"{selections[0]}"</span>?</h1>
+          <h1>On a scale from 1 to 10, how strongly do you believe the thought: <span style={{color: "#007FA3"}}>"{selections[1]}"</span>?</h1>
           <div className={styles.subheader}>1: Do not believe; 10: Strongly believe</div>
           <div className={styles.numberBoxes}>
             {renderNumberBoxes("beliefRating")}

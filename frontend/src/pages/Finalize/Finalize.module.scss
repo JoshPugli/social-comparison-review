@@ -35,3 +35,56 @@
   align-items: center;
   align-self: center;
 }
+
+.commonLabel {
+  margin-top: 2rem;
+  font-size: 1.5em;
+  color: $secondary;
+}
+
+.textArea {
+  color: $header-grey;
+  border: 1px solid #ccc;
+  border-radius: 1rem 1rem 0px 1rem; 
+  padding: 1rem 1rem;
+  font-size: 1.2em;
+  text-align: left;
+  width: 100%;
+  margin-top: 1rem;
+  height: auto;        // Adjust based on content or set a fixed height
+}
+
+.textAreaContainer {
+  position: relative;  
+  width: 50vw;
+}
+
+.moreHelpContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.buttonInTextArea {
+  position: absolute;
+  right: 1rem;          // 10px from the right edge of the container
+  bottom: 1rem;         // 10px from the bottom edge of the container
+  padding: 6px 12px;    // Padding for the button, adjustable
+  cursor: pointer;      // Cursor to pointer to indicate it's clickable
+  background-color: #4892fb; // Example button color, customizable
+  border: none;         // No border unless desired
+  border-radius: 4px;   // Rounded corners for the button
+  color: white;         // Text color
+  font-size: 1.2em;
+  transition: background-color 0.3s ease-in-out; // Smooth transition for hover effect
+}
+
+.buttonInTextArea:hover {
+  background-color: darken(#4892fb, 10%); 
+}
+
+.wouldLikeToText {
+  font-size: 1.2em;
+  color: $subheader-grey;
+}

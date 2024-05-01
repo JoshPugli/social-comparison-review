@@ -16,18 +16,24 @@ class GetDistortionsView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = SituationThoughtSerializer(data=request.data)
         if serializer.is_valid():
-            curr_situation = serializer.validated_data["curr_situation"]
-            curr_thought = serializer.validated_data["curr_thought"]
-            distortions = generate_distortions(curr_situation, curr_thought)
-            if distortions == "OPENAI_API_KEY not set.":
-                return Response(
-                    {"error": "OPENAI_API_KEY not set."},
-                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            try:
+                curr_situation = serializer.validated_data["curr_situation"]
+                curr_thought = serializer.validated_data["curr_thought"]
+                distortions, label_probabilities = generate_distortions(
+                    curr_situation, curr_thought
                 )
-            else:
+                print("Distortions: ", distortions, "Label Probabilities: ", label_probabilities)
                 return Response(
-                    {"distortions": distortions},
+                    {
+                        "distortions": distortions,
+                        "label_probabilities": label_probabilities,
+                    },
                     status=status.HTTP_200_OK,
+                )
+            except Exception as e:
+                return Response(
+                    {"error": str(e)},
+                    status=status.HTTP_400_BAD_REQUEST,
                 )
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -64,6 +70,12 @@ class UpdateReframeView(APIView):
             new_reframe = update_reframe(
                 curr_situation, curr_thought, distortions, current_reframe, user_request
             )
+            new_reframe = new_reframe.strip()
+            
+            if new_reframe[0] == '"' or new_reframe[-1] == '"':
+                new_reframe = new_reframe[1:]
+            if new_reframe[-1] == "'" or new_reframe[-1] == '"':
+                new_reframe = new_reframe[:-1]
 
             return Response(
                 {"new_reframe": new_reframe},

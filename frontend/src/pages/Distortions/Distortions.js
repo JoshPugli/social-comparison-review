@@ -20,18 +20,20 @@ const Distortion = ({
   situation,
 }) => {
   const [generatedDistortions, setDistortions] = useState([]);
+  const [probabilities, setProbabilities] = useState([]);
+  let initialDistortions = [];
+  let remainingDistortions = [];
+  if (probabilities.length > 0) {
+    initialDistortions = probabilities.slice(0,4)
+    remainingDistortions = probabilities.slice(4)
+  }
+
   const [loading, setLoading] = useState(true);
   const [selectedDistortions, setSelectedDistortions] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const doMockCall = false;
   const called = useRef(false);
 
-  const remainingDistortions = distortions.filter(
-    (distortion) =>
-      !generatedDistortions
-        .map((d) => d.toLowerCase())
-        .includes(distortion.toLowerCase())
-  );
 
   useEffect(() => {
     if (doMockCall) {
@@ -50,6 +52,7 @@ const Distortion = ({
           setLoading(false);
           console.log("Recieved distortion data from backend:", response.data);
           setDistortions(response.data.distortions);
+          setProbabilities(response.data.label_probabilities);
         })
         .catch((error) => {
           console.error("Error fetching distortions:", error);
@@ -85,7 +88,7 @@ const Distortion = ({
             <Icon icon="icon-park-outline:info" className={styles.infoIcon} />
             What is a thinking trap?
           </div>
-          <div className={styles.infoText} style={{marginBottom: "1rem"}}>
+          <div className={styles.infoText} style={{ marginBottom: "1rem" }}>
             Our negative thinking often falls into common patterns, called
             "thinking traps." We can learn to recognize when we're getting stuck
             in a thinking trap. This gives us more power over our negative
@@ -119,25 +122,20 @@ const Distortion = ({
               Thinking traps we think you might be falling for:
             </div>
           ))}
-        {!loading && generatedDistortions.length === 0 && (
-          <div className={styles.descriptiveText}>
-            We could not find thinking traps associated with your thought <br />{" "}
-            Expand all options below:
-          </div>
-        )}
       </div>
       <div className={styles.distortions}>
         {loading
-          ? Array(3) // Assuming you want to display 3 loading cards
+          ? Array(4) // Assuming you want to display 3 loading cards
               .fill()
               .map((_, index) => <LoadingSkeleton key={index} />)
-          : generatedDistortions.map((distortion, index) => (
+          : initialDistortions.map((tuple, index) => (
               <Card
                 key={index}
-                title={capitalizeWords(distortion)}
-                selected={selectedDistortions.includes(distortion)}
-                description={distortionDescriptions[distortion]}
-                onClick={() => handleCardClick(distortion)}
+                title={(tuple[0])}
+                selected={selectedDistortions.includes(tuple[0])}
+                description={distortionDescriptions[tuple[0]]}
+                onClick={() => handleCardClick(tuple[0])}
+                probability={tuple[1]}
               />
             ))}
       </div>
@@ -167,13 +165,14 @@ const Distortion = ({
       </div>
       <div className={styles.distortions}>
         {showAll &&
-          remainingDistortions.map((distortion, index) => (
+          remainingDistortions.map((tuple, index) => (
             <Card
               key={index}
-              title={capitalizeWords(distortion)}
-              selected={selectedDistortions.includes(distortion)}
-              description={distortionDescriptions[distortion]}
-              onClick={() => handleCardClick(distortion)}
+              title={capitalizeWords(tuple[0])}
+              selected={selectedDistortions.includes(tuple[0])}
+              description={distortionDescriptions[tuple[0]]}
+              onClick={() => handleCardClick(tuple[0])}
+              probability={tuple[1]}
             />
           ))}
       </div>

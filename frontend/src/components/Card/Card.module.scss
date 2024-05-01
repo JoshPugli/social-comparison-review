@@ -76,3 +76,18 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+.probability-container {
+  padding: 0.5em 0;
+  width: 100%;  // Ensure this container takes full width to layout the bar properly
+}
+
+.probability-bar {
+  background-color: #4caf50;  // Green color for the bar
+  color: white;
+  text-align: center;
+  height: 20px;  // Set a fixed height for the bar
+  line-height: 20px;  // Align the text vertically
+  border-radius: 5px;  // Optional: rounded corners
+  transition: width 0.3s ease;  // Smooth transition for width changes
+}

@@ -12,13 +12,21 @@ const End = ({selections}) => {
   };
 
   const handleDownload = () => {
-    const dataStr = JSON.stringify(selections, null, 2);
-    const blob = new Blob([dataStr], { type: "application/json" });
+    let dataStr = `Negative thought I had: ${selections[1]}\n`;
+    dataStr += `Emotion I felt: ${selections[2].emotion}\n`;
+    dataStr += `Situation I was in: ${selections[3]}\n`;
+    dataStr += `Thinking trap(s) I identified: ${selections[4].join(", ")}\n`;
+    dataStr += `Reframe I came up with: ${selections[6]}\n`;
+  
+    const blob = new Blob([dataStr], { type: "text/plain" });
+  
     const url = URL.createObjectURL(blob);
+  
     const link = document.createElement("a");
     link.href = url;
-    link.download = "ThoughtRecord.json";
+    link.download = "ThoughtRecord.txt";  
     link.click();
+  
     URL.revokeObjectURL(url);
   };
 

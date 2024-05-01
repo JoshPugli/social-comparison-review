@@ -7,7 +7,8 @@ import Distortion from "../Distortions/Distortions";
 import Reframe from "../Reframe/Reframe";
 import Situation from "../Situation/Situation";
 import Emotion from "../Emotion/Emotion";
-import Finalize from "../Finalize/Finalize";
+// import Finalize from "../Finalize/Finalize";
+import Finalize from "../Finalize/Finalize_2";
 import { stages } from "../../assets/constants";
 import End from "../End/End";
 import ID from "../ID/ID";
@@ -27,6 +28,15 @@ const Home = () => {
     const savedIsFinal = sessionStorage.getItem("isFinal");
     return savedIsFinal ? JSON.parse(savedIsFinal) : false;
   });
+
+  const handleForward = () => {
+    if (currentPage === stages.length - 1) {
+      setIsFinal(true);
+      // navigate("/end", { state: { selections } });
+    } else {
+      setCurrentPage((prev) => Math.min(prev + 1, stages.length - 1));
+    }
+  };
 
   useEffect(() => {
     sessionStorage.setItem("currentPage", JSON.stringify(currentPage));
@@ -83,6 +93,7 @@ const Home = () => {
       selections,
       setSelections,
       currentPage,
+      handleForward,
     },
     End: {
       selections,
@@ -115,15 +126,6 @@ const Home = () => {
 
   const handleBack = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 0));
-  };
-
-  const handleForward = () => {
-    if (currentPage === stages.length - 1) {
-      setIsFinal(true);
-      // navigate("/end", { state: { selections } });
-    } else {
-      setCurrentPage((prev) => Math.min(prev + 1, stages.length - 1));
-    }
   };
 
   return (

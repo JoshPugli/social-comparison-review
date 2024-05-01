@@ -2,7 +2,14 @@ import React from "react";
 import styles from "./Card.module.scss";
 import { Icon } from "@iconify/react";
 
-const Card = ({ title, description, selected, onClick, isReframe = false }) => {
+const Card = ({
+  title,
+  description,
+  selected,
+  onClick,
+  isReframe = false,
+  probability = null,
+}) => {
   return (
     <div
       className={`${styles["distortion-card-container"]} ${
@@ -29,6 +36,13 @@ const Card = ({ title, description, selected, onClick, isReframe = false }) => {
         <div className={styles["distortion-description"]}>
           <p>{description}</p>
         </div>
+        {probability && (
+          <div className={styles["probability-container"]}>
+            <div className={styles["probability-bar"]} style={{width: `${probability * 100}%`}}>
+              {`${(probability * 100).toFixed(1)}%`}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

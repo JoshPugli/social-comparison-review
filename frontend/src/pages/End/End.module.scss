@@ -15,7 +15,7 @@
   height: 100%;
   border: 1px solid #ccc;
   border-radius: 10px;
-  min-width: 50vw;
+  width: 50vw;
   box-sizing: border-box; // Include border in the element's total width and height
 }
 
@@ -62,7 +62,7 @@
 
 .downloadButton {
   background-color: #4892fb;
-  padding: 5px;
+  padding: 10px;
   color: #fff;
   transition: all 0.2s ease-in-out;
   width: 100%;
