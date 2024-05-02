@@ -5,3 +5,4 @@ venv
 **/thinking_traps.jsonl
 **/formatted_data.jsonl
 **/bert_finetune.py
+**/bert_finetuned.pth
