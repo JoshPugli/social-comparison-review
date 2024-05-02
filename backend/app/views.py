@@ -19,14 +19,13 @@ class GetDistortionsView(APIView):
             try:
                 curr_situation = serializer.validated_data["curr_situation"]
                 curr_thought = serializer.validated_data["curr_thought"]
-                distortions, label_probabilities = generate_distortions(
+                distortions = generate_distortions(
                     curr_situation, curr_thought
                 )
-                print("Distortions: ", distortions, "Label Probabilities: ", label_probabilities)
+                print("Distortions: ", distortions)
                 return Response(
                     {
                         "distortions": distortions,
-                        "label_probabilities": label_probabilities,
                     },
                     status=status.HTTP_200_OK,
                 )

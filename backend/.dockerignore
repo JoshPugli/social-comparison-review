@@ -1,0 +1,7 @@
+.git/
+*.sqlite3
+debug.log
+venv
+**/thinking_traps.jsonl
+**/formatted_data.jsonl
+**/bert_finetune.py

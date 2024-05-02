@@ -20,13 +20,9 @@ const Distortion = ({
   situation,
 }) => {
   const [generatedDistortions, setDistortions] = useState([]);
-  const [probabilities, setProbabilities] = useState([]);
-  let initialDistortions = [];
-  let remainingDistortions = [];
-  if (probabilities.length > 0) {
-    initialDistortions = probabilities.slice(0,4)
-    remainingDistortions = probabilities.slice(4)
-  }
+  const remainingDistortions = distortions.filter(
+    (d) => !generatedDistortions.includes(d)
+  );
 
   const [loading, setLoading] = useState(true);
   const [selectedDistortions, setSelectedDistortions] = useState([]);
@@ -52,7 +48,6 @@ const Distortion = ({
           setLoading(false);
           console.log("Recieved distortion data from backend:", response.data);
           setDistortions(response.data.distortions);
-          setProbabilities(response.data.label_probabilities);
         })
         .catch((error) => {
           console.error("Error fetching distortions:", error);
@@ -128,14 +123,13 @@ const Distortion = ({
           ? Array(4) // Assuming you want to display 3 loading cards
               .fill()
               .map((_, index) => <LoadingSkeleton key={index} />)
-          : initialDistortions.map((tuple, index) => (
+          : generatedDistortions.map((distortion, index) => (
               <Card
                 key={index}
-                title={(tuple[0])}
-                selected={selectedDistortions.includes(tuple[0])}
-                description={distortionDescriptions[tuple[0]]}
-                onClick={() => handleCardClick(tuple[0])}
-                probability={tuple[1]}
+                title={distortion}
+                selected={selectedDistortions.includes(distortion)}
+                description={distortionDescriptions[distortion]}
+                onClick={() => handleCardClick(distortion)}
               />
             ))}
       </div>
@@ -165,14 +159,13 @@ const Distortion = ({
       </div>
       <div className={styles.distortions}>
         {showAll &&
-          remainingDistortions.map((tuple, index) => (
+          remainingDistortions.map((distortion, index) => (
             <Card
               key={index}
-              title={capitalizeWords(tuple[0])}
-              selected={selectedDistortions.includes(tuple[0])}
-              description={distortionDescriptions[tuple[0]]}
-              onClick={() => handleCardClick(tuple[0])}
-              probability={tuple[1]}
+              title={capitalizeWords(distortion)}
+              selected={selectedDistortions.includes(distortion)}
+              description={distortionDescriptions[distortion]}
+              onClick={() => handleCardClick(distortion)}
             />
           ))}
       </div>

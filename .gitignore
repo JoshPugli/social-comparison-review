@@ -2,3 +2,5 @@
 .vscode/
 **/debug.log
 **/bert_finetuned.pth
+**/venv
+.venv

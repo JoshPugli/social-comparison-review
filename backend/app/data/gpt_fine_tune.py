@@ -40,5 +40,3 @@ if completed_job.status == 'succeeded':
     print(f"Fine-tuning completed successfully. Model ID: {model_id}")
 else:
     print(f"Fine-tuning job did not succeed. Status: {completed_job['status']}")
-
-"ft:gpt-3.5-turbo-0125:personal::9JgrsBuM"

@@ -1,10 +1,42 @@
-app = "social-comparison-backend"
+# fly.toml app configuration file generated for reframe-backend-holy-thunder-2632 on 2024-05-01T14:56:09-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'reframe-backend-holy-thunder-2632'
+primary_region = 'ewr'
+console_command = '/code/manage.py shell'
+
+[build]
+
+[env]
+  PORT = '8000'
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[services]]
+  protocol = 'tcp'
   internal_port = 8000
-  protocol = "tcp"
+
   [[services.ports]]
     port = 80
+    handlers = ['http']
 
   [[services.ports]]
     port = 443
+    handlers = ['tls', 'http']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[[statics]]
+  guest_path = '/code/static'
+  url_prefix = '/static/'

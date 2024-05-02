@@ -1,8 +1,6 @@
 from openai import OpenAI
 import dotenv
 import os
-import openai
-import time
 import ast
 from transformers import BertModel
 import torch.nn as nn
@@ -10,8 +8,23 @@ from transformers import BertTokenizer
 import torch
 import pandas as pd
 from sklearn.preprocessing import MultiLabelBinarizer
-import json
-import re
+
+DISTORTIONS = [
+    "emotional reasoning",
+    "fortune telling",
+    "comparing and despairing",
+    "negative feeling or emotion",
+    "should statements",
+    "disqualifying the positive",
+    "catastrophizing",
+    "overgeneralizing",
+    "all-or-nothing thinking",
+    "magnification",
+    "labeling",
+    "mind reading",
+    "blaming",
+    "personalizing",
+]
 
 CURRENT_FILE = os.path.abspath(os.path.dirname(__file__))
 
@@ -26,76 +39,101 @@ except Exception as e:
     client = None
 
 
+# def generate_distortions(
+#     situation,
+#     thought,
+# ):
+#     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+#     df = pd.read_csv(f"{CURRENT_FILE}/data/reframing_dataset.csv")
+#     df["text"] = df["situation"] + " " + df["thought"]
+#     df["labels"] = df["thinking_traps_addressed"].apply(lambda x: x.split(","))
+#     mlb = MultiLabelBinarizer()
+#     mlb.fit_transform(df["labels"])
+
+#     class BertForMultiLabelClassification(nn.Module):
+#         def __init__(self, num_labels):
+#             super(BertForMultiLabelClassification, self).__init__()
+#             self.bert = BertModel.from_pretrained("bert-base-uncased")
+#             self.classifier = nn.Linear(self.bert.config.hidden_size, num_labels)
+
+#         def forward(self, input_ids, attention_mask):
+#             outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask)
+#             pooled_output = outputs.pooler_output
+#             logits = self.classifier(pooled_output)
+#             return logits
+
+#     model = BertForMultiLabelClassification(num_labels=len(mlb.classes_))
+#     model.load_state_dict(torch.load(f"{CURRENT_FILE}/bert_finetuned.pth"))
+
+#     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+#     model.to(device)
+#     model.eval()
+
+#     thought = thought.strip()
+#     situation = situation.strip()
+#     if thought[-1] != ".":
+#         thought += "."
+#     if situation[-1] != ".":
+#         situation += "."
+
+#     input = situation + " " + thought
+
+#     encodings = tokenizer(
+#         input,
+#         truncation=True,
+#         padding="max_length",
+#         max_length=512,
+#         return_tensors="pt",
+#     )
+
+#     input_ids = encodings["input_ids"].to(device)
+#     attention_mask = encodings["attention_mask"].to(device)
+
+#     def get_top_n_labels(n):
+#         with torch.no_grad():
+#             logits = model(input_ids, attention_mask)
+#             probabilities = torch.sigmoid(logits)
+
+#         label_probabilities = sorted(
+#             [
+#                 (label, prob.item())
+#                 for label, prob in zip(mlb.classes_, probabilities.squeeze())
+#             ],
+#             key=lambda x: x[1],
+#             reverse=True,
+#         )
+
+#         # Extract the top n labels based on the sorted probabilities
+#         top_n_labels = [label for label, _ in label_probabilities[:n]]
+
+#         return top_n_labels, label_probabilities
+
+#     return get_top_n_labels(4)
+
+
 def generate_distortions(
-    situation,
-    thought,
+    thought, situation, model="ft:gpt-3.5-turbo-0125:personal::9KVzx0oJ"
 ):
-    tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-    df = pd.read_csv(f"{CURRENT_FILE}/data/reframing_dataset.csv")
-    df["text"] = df["situation"] + " " + df["thought"]
-    df["labels"] = df["thinking_traps_addressed"].apply(lambda x: x.split(","))
-    mlb = MultiLabelBinarizer()
-    mlb.fit_transform(df["labels"])
-
-    class BertForMultiLabelClassification(nn.Module):
-        def __init__(self, num_labels):
-            super(BertForMultiLabelClassification, self).__init__()
-            self.bert = BertModel.from_pretrained("bert-base-uncased")
-            self.classifier = nn.Linear(self.bert.config.hidden_size, num_labels)
-
-        def forward(self, input_ids, attention_mask):
-            outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask)
-            pooled_output = outputs.pooler_output
-            logits = self.classifier(pooled_output)
-            return logits
-
-    model = BertForMultiLabelClassification(num_labels=len(mlb.classes_))
-    model.load_state_dict(torch.load(f"{CURRENT_FILE}/bert_finetuned.pth"))
-
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model.to(device)
-    model.eval()
-
-    thought = thought.strip()
-    situation = situation.strip()
-    if thought[-1] != ".":
-        thought += "."
-    if situation[-1] != ".":
-        situation += "."
-
-    input = situation + " " + thought
-
-    encodings = tokenizer(
-        input,
-        truncation=True,
-        padding="max_length",
-        max_length=512,
-        return_tensors="pt",
+    completion = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "system",
+                "content": f'Given a "situation", and a "distorted thought", generate a list of "thinking traps" from the list: {DISTORTIONS} that correspond to the thought and situation.',
+            },
+            {
+                "role": "user",
+                "content": f'{{"situation": "{situation}", "distorted_thought": "{thought}"}}',
+            },
+        ],
     )
 
-    input_ids = encodings["input_ids"].to(device)
-    attention_mask = encodings["attention_mask"].to(device)
+    distortions = completion.choices[0].message.content
+    distortions = distortions.split(":")[-1].strip()
 
-    def get_top_n_labels(n):
-        with torch.no_grad():
-            logits = model(input_ids, attention_mask)
-            probabilities = torch.sigmoid(logits)
+    distortions = ast.literal_eval(distortions)
 
-        label_probabilities = sorted(
-            [
-                (label, prob.item())
-                for label, prob in zip(mlb.classes_, probabilities.squeeze())
-            ],
-            key=lambda x: x[1],
-            reverse=True,
-        )
-
-        # Extract the top n labels based on the sorted probabilities
-        top_n_labels = [label for label, _ in label_probabilities[:n]]
-
-        return top_n_labels, label_probabilities
-
-    return get_top_n_labels(4)
+    return distortions
 
 
 def generate_reframes(

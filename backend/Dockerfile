@@ -1,14 +1,20 @@
-FROM python:3.9
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-ENV PYTHONUNBUFFERED=1
+# Set environment varibles
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-WORKDIR /backend
+# Set work directory
+WORKDIR /code
 
-RUN pip install django django-cors-headers djangorestframework openai scikit-learn numpy pandas torch transformers python-dotenv
+# Install dependencies
+COPY requirements.txt /code/
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-COPY . . 
+# Copy project
+COPY . /code/
 
-EXPOSE 8000
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
+# Run the application
+CMD gunicorn your_project.wsgi:application --bind 0.0.0.0:$PORT
