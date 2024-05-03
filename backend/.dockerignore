@@ -6,3 +6,4 @@ venv
 **/formatted_data.jsonl
 **/bert_finetune.py
 **/bert_finetuned.pth
+**/data/
