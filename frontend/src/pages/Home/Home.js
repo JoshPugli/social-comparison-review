@@ -16,6 +16,7 @@ import axios from "axios";
 import { backendURL } from "../../assets/constants";
 
 const Home = () => {
+  console.log('Backend URL:', backendURL)
   const [currentPage, setCurrentPage] = useState(() => {
     const savedPage = sessionStorage.getItem("currentPage");
     return savedPage ? JSON.parse(savedPage) : 0; // Change this default value as needed
