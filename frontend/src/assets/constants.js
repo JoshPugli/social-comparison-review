@@ -106,8 +106,9 @@ const useStyles = makeStyles({
   },
 });
 
-const backendURL = process.env.backendURL || "http://localhost:8000";
-const frontendURL = process.env.frontendURL || "http://localhost:3000";
+// const backendURL = "http://localhost:8000";
+const backendURL = "https://reframe-backend.fly.dev";
+
 
 const distortions = [
   "disqualifying the positive",
@@ -166,7 +167,6 @@ export {
   useStyles,
   thoughts,
   backendURL,
-  frontendURL,
   distortions,
   distortionDescriptions,
 };

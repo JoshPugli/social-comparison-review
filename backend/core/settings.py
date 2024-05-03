@@ -63,6 +63,13 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://reframe-frontend.fly.dev',
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'https://reframe-backend.fly.dev',
+]
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
