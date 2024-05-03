@@ -1,8 +1,5 @@
 import React from "react";
 import styles from "./End.module.scss"; // Ensure the correct path is used for the CSS module
-import Lottie from "react-lottie";
-import animationData from "../../assets/animations/Animation - 1711487741365.json";
-import { useLocation, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 const End = ({selections}) => {

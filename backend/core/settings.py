@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['your-fly-app-name.fly.dev', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['reframe-frontend.fly.dev', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -60,7 +60,8 @@ ROOT_URLCONF = "core.urls"
 
 # Or specify allowed origins
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # Adjust to your frontend's origin
+    'http://localhost:3000',  
+    'https://reframe-frontend.fly.dev',
 ]
 
 TEMPLATES = [

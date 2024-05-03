@@ -12,6 +12,8 @@ import Finalize from "../Finalize/Finalize_2";
 import { stages } from "../../assets/constants";
 import End from "../End/End";
 import ID from "../ID/ID";
+import axios from "axios";
+import { backendURL } from "../../assets/constants";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -32,7 +34,22 @@ const Home = () => {
   const handleForward = () => {
     if (currentPage === stages.length - 1) {
       setIsFinal(true);
-      // navigate("/end", { state: { selections } });
+      axios.post(`${backendURL}/submission/`, {
+        user_id : selections[0],
+        thought: selections[1],
+        beliefRating: selections[2].beliefRating,
+        emotion: selections[2].emotion,
+        emotionIntensity: selections[2].emotionIntensity,
+        situation: selections[3],
+        distortions: selections[4],
+        initialReframe: selections[5],
+        finalReframe: selections[6],
+      }).then((response) => {
+        console.log("Submission response:", response)
+      }).catch((error) => {
+        console.error("Error submitting data:", error);
+      });
+      
     } else {
       setCurrentPage((prev) => Math.min(prev + 1, stages.length - 1));
     }

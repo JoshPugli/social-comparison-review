@@ -18,3 +18,15 @@ class UpdateReframeSerializer(serializers.Serializer):
     distortions = serializers.ListField(child=serializers.CharField())
     current_reframe = serializers.CharField()
     user_request = serializers.CharField()
+    
+class FinalSubmissionSerializer(serializers.Serializer):
+    thought = serializers.CharField()
+    beliefRating = serializers.IntegerField()
+    emotion = serializers.CharField()
+    emotionIntensity = serializers.IntegerField()
+    situation = serializers.CharField()
+    distortions = serializers.CharField()
+    initialReframe = serializers.CharField()
+    finalReframe = serializers.CharField()
+    
+    user_id = serializers.IntegerField()
