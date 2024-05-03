@@ -27,9 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['reframe-backend.fly.dev', 'localhost', '127.0.0.1']
-
+DEBUG = True
+ALLOWED_HOSTS = ['reframe-backend.fly.dev', 'localhost', '127.0.0.1', '66.241.125.103', '2a09:8280:1::34:28e8:0']
 
 # Application definition
 
